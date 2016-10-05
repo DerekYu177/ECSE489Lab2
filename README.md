@@ -5,7 +5,7 @@ The purpose of this lab is to be able create a simple CLI for DNS packets
 
 Interface:
 
-`DnsClient	[-t	timeout]	[-r	max-retries] [-port] [-mx|-ns]	name`
+`DnsClient	[-t	timeout]	[-r	max-retries] [-port] [-mx|-ns] @server name`
 
 where the arguments are defined as follows.
   - `timeout` (optional) gives how long to wait, in seconds, before retransmitting an unanswered query. Default value: 5.
