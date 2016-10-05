@@ -15,45 +15,52 @@ public class UDPClient {
 	public static void main(String args[]) throws Exception
 	{
 		// Open a reader to input from the command line
-		BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
+		System.out.println("Hi there, please enter characters");
+		// String input;
+		// BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
+		// input = inFromUser.readLine();
+
+		System.out.println("Sending to DNSPacketMaker...");
+		DNSPacketMaker packetMaker = new DNSPacketMaker(args);
+		packetMaker.debugPrint();
 
 		// Create a UDP socket
 		// (Note, when no port number is specified, the OS will assign an arbitrary one)
-		DatagramSocket clientSocket = new DatagramSocket();
+		// DatagramSocket clientSocket = new DatagramSocket();
 
 		// Resolve a domain name to an IP address object
 		// In this case, "localhost" maps to the so-called loop-back address, 127.0.0.1
-		InetAddress ipAddress = InetAddress.getByName("localhost");
+		// InetAddress ipAddress = InetAddress.getByName("localhost");
 
 		// Allocate buffers for the data to be sent and received
-		byte[] sendData = new byte[1024];
-		byte[] receiveData = new byte[1024];
+		// byte[] sendData = new byte[1024];
+		// byte[] receiveData = new byte[1024];
 
 		// Read a sentence from the user
-		System.out.println("Type a message and hit enter.");
-		String sentence = inFromUser.readLine();
+		// System.out.println("Type a message and hit enter.");
+		// String sentence = inFromUser.readLine();
 
 		// Convert the sentence from a String to an array of bytes
-		sendData = sentence.getBytes();
+		// sendData = sentence.getBytes();
 
 		// Create a UDP packet to be sent to the server
 		// This involves specifying the sender's address and port number
-		DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, ipAddress, 9876);
+		// DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, ipAddress, 9876);
 
 		// Send the packet
-		clientSocket.send(sendPacket);
+		// clientSocket.send(sendPacket);
 
 		// Create a packet structure to store data sent back by the server
-		DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+		// DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
 
 		// Receive data from the server
-		clientSocket.receive(receivePacket);
+		// clientSocket.receive(receivePacket);
 
 		// Extract the sentence (as a String object) from the received byte stream
-		String modifiedSentence = new String(receivePacket.getData());
-		System.out.println("From self: " + sentence);
+		// String modifiedSentence = new String(receivePacket.getData());
+		// System.out.println("From self: " + sentence);
 
 		// Close the socket
-		clientSocket.close();
+		// clientSocket.close();
 	}
 }
