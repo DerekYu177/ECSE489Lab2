@@ -26,12 +26,21 @@ public class DNSPacketMaker {
     // the second to last element must be the server name
     String serverName = input[input.length - 2];
 
-    // TODO: preform name validation
-    if (validServerName(serverName)) {
-      System.out.println("Successful serverName" + serverName);
+    // the last element must be the domain name
+    String domainName = input[input.length - 1];
+
+    // so far we have ignored all of the other variables -t -r -p -mx|ns
+    // TODO: create methods that check for these other variables
+    
+    if (validServerName(serverName) || validName(domainName)) {
+      createPacket();
     } else {
       throw new IllegalArgumentException();
     }
+  }
+
+  public byte[] createPacket() {
+    // TODO: create packets
   }
 
   public boolean validServerName(String serverName) {
@@ -58,5 +67,10 @@ public class DNSPacketMaker {
     }
 
     return true;
+  }
+
+  public boolean validName(String domainName) {
+    // TODO: do this.
+    return true
   }
 }
