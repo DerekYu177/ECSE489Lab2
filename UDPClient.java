@@ -22,6 +22,7 @@ public class UDPClient {
 
 		System.out.println("Sending to DNSPacketMaker...");
 		DNSPacketMaker packetMaker = new DNSPacketMaker(args);
+		byte[] sendData = packetMaker.createPacket();
 
 		// Create a UDP socket
 		// (Note, when no port number is specified, the OS will assign an arbitrary one)

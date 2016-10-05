@@ -1,14 +1,23 @@
 import java.io.*;
-import org.apache.commons.validator.routines;
-
 
 public class DNSPacketMaker {
-  private String input[];
+  private String[] input;
 
   // constructor
-  public DNSPacketMaker(String input[]) {
+  public DNSPacketMaker(String[] input) {
     this.input = input;
-    inputChecker(input);
+  }
+
+  public byte[] createPacket() {
+    // TODO: create packets
+    byte[] packet = new byte[0];
+
+    if (inputChecker(this.input)) {
+      packet = new byte[20];
+      return packet;
+    }
+
+    return packet;
   }
 
   public void debugPrint() {
@@ -19,28 +28,20 @@ public class DNSPacketMaker {
   }
 
   // checks for the "required" fields - read README on GitHub for more information
-  public void inputChecker(String input[]) {
+  public boolean inputChecker(String input[]) {
     System.out.println("Checking for errors");
 
-
-    // the second to last element must be the server name
     String serverName = input[input.length - 2];
-
-    // the last element must be the domain name
     String domainName = input[input.length - 1];
 
     // so far we have ignored all of the other variables -t -r -p -mx|ns
     // TODO: create methods that check for these other variables
-    
+
     if (validServerName(serverName) || validName(domainName)) {
-      createPacket();
+      return true;
     } else {
       throw new IllegalArgumentException();
     }
-  }
-
-  public byte[] createPacket() {
-    // TODO: create packets
   }
 
   public boolean validServerName(String serverName) {
@@ -71,6 +72,6 @@ public class DNSPacketMaker {
 
   public boolean validName(String domainName) {
     // TODO: do this.
-    return true
+    return true;
   }
 }
