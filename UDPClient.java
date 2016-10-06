@@ -36,13 +36,6 @@ public class UDPClient {
 		// byte[] sendData = new byte[1024];
 		// byte[] receiveData = new byte[1024];
 
-		// Read a sentence from the user
-		// System.out.println("Type a message and hit enter.");
-		// String sentence = inFromUser.readLine();
-
-		// Convert the sentence from a String to an array of bytes
-		// sendData = sentence.getBytes();
-
 		// Create a UDP packet to be sent to the server
 		// This involves specifying the sender's address and port number
 		// DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, ipAddress, 9876);
