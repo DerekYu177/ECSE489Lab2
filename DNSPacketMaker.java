@@ -74,4 +74,8 @@ public class DNSPacketMaker {
     // TODO: do this.
     return true;
   }
+
+  public getIPAddress() {
+    return this.ipAddr;
+  }
 }

@@ -17,11 +17,12 @@ public class DNSClient {
 
 		// Create a UDP socket
 		// (Note, when no port number is specified, the OS will assign an arbitrary one)
-		// DatagramSocket clientSocket = new DatagramSocket();
+		DatagramSocket clientSocket = new DatagramSocket();
 
-		// Resolve a domain name to an IP address object
+		// This also has to be input by the user
 		// In this case, "localhost" maps to the so-called loop-back address, 127.0.0.1
-		// InetAddress ipAddress = InetAddress.getByName("localhost");
+		// byte[] ipAddress = byte
+		InetAddress ipAddress = InetAddress.getByName("localhost");
 
 		// Allocate buffers for the data to be sent and received
 		// byte[] sendData = new byte[1024];
