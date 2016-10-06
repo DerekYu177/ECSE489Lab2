@@ -1,10 +1,10 @@
 import java.io.*;
 
-public class DNSPacketMaker {
+public class DNSPacketValidator {
   private String[] input;
 
   // constructor
-  public DNSPacketMaker(String[] input) {
+  public DNSPacketValidator(String[] input) {
     this.input = input;
   }
 
