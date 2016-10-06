@@ -9,11 +9,22 @@ public class DNSPacketValidator {
   }
 
   public byte[] createPacket() {
-    // TODO: create packets
     byte[] packet = new byte[0];
 
+    // we are going to create the header and the message separately
+    byte[] packetHeader = new byte[24];
+
     if (inputChecker(this.input)) {
+      // TODO: identify and extract relevant material for headers
+
       packet = new byte[20];
+
+      // TODO: create header
+
+      // TODO: create query with proper inputs
+
+      // TODO: combine
+
       return packet;
     }
 
@@ -71,11 +82,7 @@ public class DNSPacketValidator {
   }
 
   public boolean validName(String domainName) {
-    // TODO: do this.
+    // TODO: name validation
     return true;
-  }
-
-  public getIPAddress() {
-    return this.ipAddr;
   }
 }
