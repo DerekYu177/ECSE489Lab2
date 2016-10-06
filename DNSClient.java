@@ -1,16 +1,7 @@
-/**
- * UDPClient
- *
- * Adapted from the example given in Section 2.8 of Kurose and Ross, Computer
- * Networking: A Top-Down Approach (5th edition)
- *
- * @author michaelrabbat
- *
- */
 import java.io.*;
 import java.net.*;
 
-public class UDPClient {
+public class DNSClient {
 
 	public static void main(String args[]) throws Exception
 	{
