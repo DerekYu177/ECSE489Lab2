@@ -16,5 +16,7 @@ where the arguments are defined as follows.
   - `name` (required) is the domain name to query for.
 
 Technical details:
-1. `DNSPacketMaker`, which is called form `UDPClient`
-2. `DNSPacketInterpreter`, which decodes and displays replies for the `UDPClient`
+  1. `DNSPacketMaker`, which is called form `UDPClient`
+  2. `DNSPacketInterpreter`, which decodes and displays replies for the `UDPClient`
+
+n.b. `ctrl`+`shift`+`m` for live display
