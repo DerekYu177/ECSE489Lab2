@@ -9,81 +9,61 @@ public class DNSPacketValidator {
   }
 
   public byte[] createPacket() {
-    byte[] packet = new byte[0];
+    // create empty packet full
+    byte[] packet = new byte[40];
 
     // we are going to create the header and the message separately
     byte[] packetHeader = new byte[24];
+    byte[] packetBody = new byte[16];
 
-    if (inputChecker(this.input)) {
-      // TODO: identify and extract relevant material for headers
+    // TODO: identify and extract relevant material for headers
+    String[] validData = extract(this.input);
 
-      packet = new byte[20];
+    // TODO: stitch packetHeader and packetBody together
 
-      // TODO: create header
+    packet = new byte[20];
 
-      // TODO: create query with proper inputs
+    // TODO: create header
 
-      // TODO: combine
+    // TODO: create query with proper inputs
 
-      return packet;
-    }
+    // TODO: combine
 
     return packet;
   }
 
-  public void debugPrint() {
-    System.out.println("Printing inputs...");
-    for (int i = 0; i < input.length; i++) {
-      System.out.println(input[i]);
-    }
-  }
+  public String[] extract(String[] data) {
+    String timeOut = null, maxRetries = null, port = null, queryType = null;
 
-  // checks for the "required" fields - read README on GitHub for more information
-  public boolean inputChecker(String input[]) {
-    System.out.println("Checking for errors");
-
-    String serverName = input[input.length - 2];
-    String domainName = input[input.length - 1];
-
-    if (!serverName.startsWith("@")) {
-      System.out.println("Failed to start with @");
-      return false;
-    } else {
-      String ipAddress = serverName.substring(1);
-    }
-
-    // so far we have ignored all of the other variables -t -r -p -mx|ns
-    // TODO: create methods that check for these other variables
-
-    if (validServerName(ipAddress) && validName(domainName)) {
-      return true;
-    } else {
-      throw new IllegalArgumentException();
-    }
-  }
-
-  public boolean validServerName(String ipAddress) {
-
-    // remove the first char to get the ipAddress
-    String[] octets = ipAddress.split("\\.");
-    int ipLength = 4;
-
-    if (octets.length != ipLength) {
-      System.out.println("Failed to be correct length, length is:" + octets.length);
-      return false;
-    }
-
-    for (int i = 0; i < octets.length; i++) {
-      if (Integer.parseInt(octets[i]) > 255 || Integer.parseInt(octets[i]) < 0) {
-        System.out.println("Failed to be within IP range");
-        return false;
+    for (int i = 0; i < data.length; i++) {
+      String option = data[i];
+      switch (option) {
+        case "-t":
+          timeOut = data[i + 1];
+          break;
+        case "-r":
+          maxRetries = data[i + 1];
+          break;
+        case "-p":
+          port = data[i + 1];
+          break;
+        case "-mx":
+          queryType = "MX";
+          break;
+        case "-ns":
+          queryType = "NS";
+          break;
+        default: break;
       }
     }
-    return true;
-  }
 
-  public boolean validName(String domainName) {
-    // TODO: name validation
-    return true;
+    // dnsName has a "@" appended to the front
+    String dnsNamePartial = data[data.length - 2];
+    String dnsName = dnsNamePartial.substring(1);
+
+    String domainName = data[data.length - 1];
+
+    String[] result = new String[] {dnsName, domainName, timeOut, maxRetries, port, queryType};
+    return result;
   }
 }
