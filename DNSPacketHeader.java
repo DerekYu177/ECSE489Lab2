@@ -9,8 +9,8 @@ public class DNSPacketHeader {
 
   }
 
-  public createPacket() {
-    
+  public BitSet createPacket() {
+    return header;
   }
 
   // getters
@@ -21,8 +21,9 @@ public class DNSPacketHeader {
   }
 
   // 0 is query, 1 is response
-  public BitSet getQR() {
-    return header.get(17);
+  public int getQR() {
+    int result = (header.get(17)) ? 1 : 0;
+    return result;
   }
 
   // set this field to 0000, standard query
@@ -31,23 +32,27 @@ public class DNSPacketHeader {
   }
 
   // response queries
-  public BitSet getAA() {
-    return header.get(22);
+  public int getAA() {
+    int result = (header.get(22)) ? 1 : 0;
+    return result;
   }
 
   // whether the message was truncated because it was too long
-  public BitSet getTC() {
-    return header.get(23);
+  public int getTC() {
+    int result = (header.get(23)) ? 1 : 0;
+    return result;
   }
 
   // set to 1 for recursion
-  public BitSet getRD() {
-    return header.get(24);
+  public int getRD() {
+    int result = (header.get(24)) ? 1 : 0;
+    return result;
   }
 
   // reponse whether the server can support recursion
-  public BitSet getRA() {
-    return header.get(25);
+  public int getRA() {
+    int result = (header.get(25)) ? 1 : 0;
+    return result;
   }
 
   // bits for future use, set to 000
