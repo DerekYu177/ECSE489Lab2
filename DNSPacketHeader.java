@@ -6,6 +6,11 @@ public class DNSPacketHeader {
 
   // need to accept proper inputs
   public DNSPacketHeader() {
+
+  }
+
+  public createPacket() {
+    
   }
 
   // getters
@@ -102,7 +107,6 @@ public class DNSPacketHeader {
     header.set(21, value[3]);
   }
 
-  // response queries
   public void setAA(int value) {
     header.set(22, value);
   }
@@ -117,7 +121,6 @@ public class DNSPacketHeader {
     header.set(24, value);
   }
 
-  // reponse whether the server can support recursion
   public void setRA(int value) {
     header.set(25, value);
   }

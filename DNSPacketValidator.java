@@ -45,24 +45,26 @@ public class DNSPacketValidator {
     String serverName = input[input.length - 2];
     String domainName = input[input.length - 1];
 
+    if (!serverName.startsWith("@")) {
+      System.out.println("Failed to start with @");
+      return false;
+    } else {
+      String ipAddress = serverName.substring(1);
+    }
+
     // so far we have ignored all of the other variables -t -r -p -mx|ns
     // TODO: create methods that check for these other variables
 
-    if (validServerName(serverName) || validName(domainName)) {
+    if (validServerName(ipAddress) && validName(domainName)) {
       return true;
     } else {
       throw new IllegalArgumentException();
     }
   }
 
-  public boolean validServerName(String serverName) {
-    if (!serverName.startsWith("@")) {
-      System.out.println("Failed to start with @");
-      return false;
-    }
+  public boolean validServerName(String ipAddress) {
 
     // remove the first char to get the ipAddress
-    String ipAddress = serverName.substring(1);
     String[] octets = ipAddress.split("\\.");
     int ipLength = 4;
 
@@ -77,7 +79,6 @@ public class DNSPacketValidator {
         return false;
       }
     }
-
     return true;
   }
 
