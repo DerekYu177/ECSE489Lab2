@@ -14,6 +14,9 @@ public class DNSPacketValidator {
 
     // we are going to create the header and the message separately
     byte[] packetHeader = new byte[24];
+    DNSPacketHeader dnsHeader = new DNSPacketHeader();
+    packetHeader = dnsHeader.createPacket();
+
     byte[] packetBody = new byte[16];
 
     // TODO: identify and extract relevant material for headers
