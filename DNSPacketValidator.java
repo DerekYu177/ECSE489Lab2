@@ -14,23 +14,14 @@ public class DNSPacketValidator {
 
     // we are going to create the header and the message separately
     byte[] packetHeader = new byte[24];
-    DNSPacketHeader dnsHeader = new DNSPacketHeader();
-    packetHeader = dnsHeader.createPacket();
-
     byte[] packetBody = new byte[16];
 
     // TODO: identify and extract relevant material for headers
     String[] validData = extract(this.input);
 
     // TODO: stitch packetHeader and packetBody together
-
-    packet = new byte[20];
-
-    // TODO: create header
-
-    // TODO: create query with proper inputs
-
-    // TODO: combine
+    DNSPacketHeader dnsHeader = new DNSPacketHeader();
+    packetHeader = dnsHeader.createPacket();
 
     return packet;
   }

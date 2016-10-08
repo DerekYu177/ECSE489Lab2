@@ -5,14 +5,10 @@ public class DNSClient {
 
 	public static void main(String args[]) throws Exception
 	{
-		// Open a reader to input from the command line
 		System.out.println("Hi there, please enter characters");
-		// String input;
-		// BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
-		// input = inFromUser.readLine();
-
-		System.out.println("Sending to DNSPacketValidator...");
 		DNSPacketValidator packetValidator = new DNSPacketValidator(args);
+
+		// creating packet
 		byte[] sendData = packetValidator.createPacket();
 
 		// Create a UDP socket
