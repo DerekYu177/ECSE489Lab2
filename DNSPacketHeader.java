@@ -113,72 +113,65 @@ public class DNSPacketHeader {
   // setters
 
   public void setID(int[] value) {
-    for (int i = 0; i < 17; i++ ){
-      header.set(i, value[i]);
-    }
-  }
+    setArrBit(value, 0);
+	}
 
   public void setQR(int value) {
-    header.set(17, value);
+    setBit(value, 17);
   }
 
   public void setOPCODE(int[] value) {
-    header.set(18, value[0]);
-    header.set(19, value[1]);
-    header.set(20, value[2]);
-    header.set(21, value[3]);
+    setArrBit(value, 18);
   }
 
   public void setAA(int value) {
-    header.set(22, value);
+    setBit(value, 22);
   }
 
   public void setTC(int value) {
-    header.set(23, value);
+    setBit(value, 13);
   }
 
   public void setRD(int value) {
-    header.set(24, value);
+    setBit(value, 24);
   }
 
   public void setRA(int value) {
-    header.set(25, value);
+    setBit(value, 25);
   }
 
   public void setZ(int[] value) {
-    header.set(26, value[0]);
-    header.set(27, value[1]);
-    header.set(28, value[2]);
+    setArrBit(value, 26);
   }
 
   public void setRCODE(int[] value) {
-    header.set(29, value[0]);
-    header.set(30, value[1]);
-    header.set(31, value[2]);
-    header.set(32, value[3]);
+    setArrBit(value, 29);
   }
 
   public void setQDCOUNT(int[] value) {
-    for (int i = 0; i < 16; i++) {
-      header.set(i + 33, value[i]);
-    }
+    setArrBit(value, 33);
   }
 
   public void setANCOUNT(int[] value) {
-    for (int i = 0; i < 16; i++) {
-      header.set(i + 49, value[i]);
-    }
+    setArrBit(value, 49);
   }
 
   public void setNSCOUNT(int[] value) {
-    for (int i = 0; i < 16; i++) {
-      header.set(i + 65, value[i]);
-    }
+    setArrBit(value, 65);
   }
 
   public void setARCOUNT(int[] value) {
-    for (int i = 0; i < 16; i++) {
-      header.set(i + 81, value[i]);
+    setArrBit(value, 81);
+  }
+
+  public void setBit(int value, int location) {
+    boolean v = (value == 1) ? true : false;
+    header.set(location, v);
+  }
+
+  public void setArrBit(int[] value, int location) {
+    for (int i = 0; i < value.length; i++) {
+        setBit(i + location, value[i]);
     }
   }
 }

@@ -1,16 +1,16 @@
 import java.io.*;
 import java.net.*;
+import java.util.Arrays;
 
 public class DNSClient {
 
 	public static void main(String args[]) throws Exception
 	{
-		System.out.println("Hi there, please enter characters");
 		DNSPacketValidator packetValidator = new DNSPacketValidator(args);
 
 		// creating packet
 		byte[] sendData = packetValidator.createPacket();
-
+		System.out.println(Arrays.toString(sendData));
 		// Create a UDP socket
 		// (Note, when no port number is specified, the OS will assign an arbitrary one)
 		// DatagramSocket clientSocket = new DatagramSocket();
