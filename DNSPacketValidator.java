@@ -23,7 +23,7 @@ public class DNSPacketValidator {
     DNSPacketHeader dnsHeader = new DNSPacketHeader();
     packetHeader = dnsHeader.createPacket();
 
-    return packet;
+    return packetHeader;
   }
 
   public String[] extract(String[] data) {

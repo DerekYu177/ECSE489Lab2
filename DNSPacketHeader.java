@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.BitSet;
 
 public class DNSPacketHeader {
@@ -48,6 +49,7 @@ public class DNSPacketHeader {
     // ARCOUNT is not read in queries
     setARCOUNT(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
 
+    System.out.println(header.toString());
     return header.toByteArray();
   }
 
@@ -171,7 +173,7 @@ public class DNSPacketHeader {
 
   public void setArrBit(int[] value, int location) {
     for (int i = 0; i < value.length; i++) {
-        setBit(i + location, value[i]);
+        setBit(value[i], i + location);
     }
   }
 }
