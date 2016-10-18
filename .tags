@@ -28,18 +28,5 @@ getZ	DNSPacketHeader.java	/^  public BitSet getZ() {$/;"	m	class:DNSPacketHeader
 header	DNSPacketHeader.java	/^  private BitSet header = new BitSet(96);$/;"	f	class:DNSPacketHeader	file:
 input	DNSPacketValidator.java	/^  private String[] input;$/;"	f	class:DNSPacketValidator	file:
 main	DNSClient.java	/^	public static void main(String args[]) throws Exception$/;"	m	class:DNSClient
-setAA	DNSPacketHeader.java	/^  public void setAA(int value) {$/;"	m	class:DNSPacketHeader
-setANCOUNT	DNSPacketHeader.java	/^  public void setANCOUNT(int[] value) {$/;"	m	class:DNSPacketHeader
-setARCOUNT	DNSPacketHeader.java	/^  public void setARCOUNT(int[] value) {$/;"	m	class:DNSPacketHeader
 setArrBit	DNSPacketHeader.java	/^  public void setArrBit(int[] value, int location) {$/;"	m	class:DNSPacketHeader
 setBit	DNSPacketHeader.java	/^  public void setBit(int value, int location) {$/;"	m	class:DNSPacketHeader
-setID	DNSPacketHeader.java	/^  public void setID(int[] value) {$/;"	m	class:DNSPacketHeader
-setNSCOUNT	DNSPacketHeader.java	/^  public void setNSCOUNT(int[] value) {$/;"	m	class:DNSPacketHeader
-setOPCODE	DNSPacketHeader.java	/^  public void setOPCODE(int[] value) {$/;"	m	class:DNSPacketHeader
-setQDCOUNT	DNSPacketHeader.java	/^  public void setQDCOUNT(int[] value) {$/;"	m	class:DNSPacketHeader
-setQR	DNSPacketHeader.java	/^  public void setQR(int value) {$/;"	m	class:DNSPacketHeader
-setRA	DNSPacketHeader.java	/^  public void setRA(int value) {$/;"	m	class:DNSPacketHeader
-setRCODE	DNSPacketHeader.java	/^  public void setRCODE(int[] value) {$/;"	m	class:DNSPacketHeader
-setRD	DNSPacketHeader.java	/^  public void setRD(int value) {$/;"	m	class:DNSPacketHeader
-setTC	DNSPacketHeader.java	/^  public void setTC(int value) {$/;"	m	class:DNSPacketHeader
-setZ	DNSPacketHeader.java	/^  public void setZ(int[] value) {$/;"	m	class:DNSPacketHeader

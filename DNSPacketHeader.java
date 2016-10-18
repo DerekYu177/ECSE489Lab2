@@ -9,45 +9,58 @@ public class DNSPacketHeader {
   public DNSPacketHeader() {}
 
   public byte[] createPacket() {
+    int ID = 0;
+    int QR = 17;
+    int OPCODE = 18;
+    int AA = 22;
+    int TC = 23;
+    int RD = 24;
+    int RA = 25;
+    int Z = 26;
+    int RCODE = 29;
+    int QDCOUNT = 33;
+    int ANCOUNT = 49;
+    int NSCOUNT = 65;
+    int ARCOUNT = 81;
 
     // set ID to be a random 16 bit number
-    setID(new int[] {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0});
+    setArrBit(new int[] {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0}, ID);
 
     // set QR to be a query (0)
-    setQR(0);
+    setBit(0, QR);
 
     // set OPCODE to be standard query (0000)
-    setOPCODE(new int[] {0,0,0,0});
+    setArrBit(new int[] {0,0,0,0}, OPCODE);
 
     // AA bit is not read in queries
-    setAA(0);
+    setBit(0, AA);
 
     // set TC to show non-truncated message
-    setTC(0);
+    setBit(0, RC);
 
     // set RD to be recursive query (1)
-    setRD(1);
+    setBit(1, RD);
 
     // RA bit is not read in queries
-    setRA(0);
+    setBit(0, RA);
 
     // set Z to normal query (000)
-    setZ(new int[] {0, 0, 0});
+    setArrBit(new int[] {0, 0, 0}, Z);
 
     // RCODE is not read in queries
-    setRCODE(new int[] {0, 0, 0, 0});
+    setArrBit(new int[] {0, 0, 0, 0}, RCODE);
 
     // set QDCOUNT to show single query (0)
-    setQDCOUNT(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1});
+    setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, QDCOUNT);
 
     // ANCOUNT is not read in queries
-    setANCOUNT(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+    setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, ANCOUNT);
 
     // NSCOUNT is not read in queries
-    setNSCOUNT(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+    setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, NSCOUNT);
 
     // ARCOUNT is not read in queries
-    setARCOUNT(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+    setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, ARCOUNT);
 
     System.out.println(header.toString());
     return header.toByteArray();
@@ -113,58 +126,6 @@ public class DNSPacketHeader {
   }
 
   // setters
-
-  public void setID(int[] value) {
-    setArrBit(value, 0);
-	}
-
-  public void setQR(int value) {
-    setBit(value, 17);
-  }
-
-  public void setOPCODE(int[] value) {
-    setArrBit(value, 18);
-  }
-
-  public void setAA(int value) {
-    setBit(value, 22);
-  }
-
-  public void setTC(int value) {
-    setBit(value, 13);
-  }
-
-  public void setRD(int value) {
-    setBit(value, 24);
-  }
-
-  public void setRA(int value) {
-    setBit(value, 25);
-  }
-
-  public void setZ(int[] value) {
-    setArrBit(value, 26);
-  }
-
-  public void setRCODE(int[] value) {
-    setArrBit(value, 29);
-  }
-
-  public void setQDCOUNT(int[] value) {
-    setArrBit(value, 33);
-  }
-
-  public void setANCOUNT(int[] value) {
-    setArrBit(value, 49);
-  }
-
-  public void setNSCOUNT(int[] value) {
-    setArrBit(value, 65);
-  }
-
-  public void setARCOUNT(int[] value) {
-    setArrBit(value, 81);
-  }
 
   public void setBit(int value, int location) {
     boolean v = (value == 1) ? true : false;

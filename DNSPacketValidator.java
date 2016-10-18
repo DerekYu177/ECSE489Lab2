@@ -13,15 +13,19 @@ public class DNSPacketValidator {
     byte[] packet = new byte[40];
 
     // we are going to create the header and the message separately
-    byte[] packetHeader = new byte[24];
-    byte[] packetBody = new byte[16];
+    byte[] packetHeader = new byte[12];
+    byte[] packetQuery = new byte[8];
 
     // TODO: identify and extract relevant material for headers
     String[] validData = extract(this.input);
 
-    // TODO: stitch packetHeader and packetBody together
+    // TODO: stitch packetHeader and packetQuery together
     DNSPacketHeader dnsHeader = new DNSPacketHeader();
+    DNSPacketQuery dnsQuery = new DNSPacketQuery(validData);
+
+    // TODO: use the valid data to create the appropriate packet
     packetHeader = dnsHeader.createPacket();
+    packetQuery = dnsQuery.createPacket();
 
     return packetHeader;
   }
