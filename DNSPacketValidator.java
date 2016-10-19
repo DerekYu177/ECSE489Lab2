@@ -16,7 +16,7 @@ public class DNSPacketValidator {
     DNSBitManipulator dnsbit = new DNSBitManipulator();
 
     byte[] packetHeader = dnsbit.createHeader();
-    DNSClient.printbyte(packetHeader); // something wrong here
+    DNSClient.printbyte(packetHeader);
     byte[] packetQuestion = dnsbit.createQuestion(validData);
 
     byte[] packet = new byte[packetHeader.length + packetQuestion.length];

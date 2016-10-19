@@ -22,8 +22,6 @@ public class DNSClient {
 
 		int port = portNumber(validData[4]);
 
-		System.out.println(port);
-
 		// current methodology does not work
 		// byte[] ipAddr = translateIPAddress(validData[0]);
 		// InetAddress ipAddress = InetAddress.getByAddress(ipAddr);

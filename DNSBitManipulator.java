@@ -8,18 +8,18 @@ public class DNSBitManipulator {
   // for createHeader
   // the placement of each section is determined by the head
   private int ID_head = 0;
-  private int QR_head = 17;
-  private int OPCODE_head = 18;
-  private int AA_head = 22;
-  private int TC_head = 23;
-  private int RD_head = 24;
-  private int RA_head = 25;
-  private int Z_head = 26;
-  private int RCODE_head = 29;
-  private int QDCOUNT_head = 33;
-  private int ANCOUNT_head = 49;
-  private int NSCOUNT_head = 65;
-  private int ARCOUNT_head = 81;
+  private int QR_head = 16;
+  private int OPCODE_head = 17;
+  private int AA_head = 21;
+  private int TC_head = 22;
+  private int RD_head = 23;
+  private int RA_head = 24;
+  private int Z_head = 25;
+  private int RCODE_head = 28;
+  private int QDCOUNT_head = 32;
+  private int ANCOUNT_head = 48;
+  private int NSCOUNT_head = 64;
+  private int ARCOUNT_head = 80;
 
   // get statements require the first and last bit
   // the convention is inclusive first bit and exclusive last bit
@@ -35,13 +35,14 @@ public class DNSBitManipulator {
   private int QDCOUNT_tail = ANCOUNT_head;
   private int ANCOUNT_tail = NSCOUNT_head;
   private int NSCOUNT_tail = ARCOUNT_head;
-  private int ARCOUNT_tail = 97;
+  private int ARCOUNT_tail = 95;
 
   // constructor
   public DNSBitManipulator() {}
 
   public byte[] createHeader() {
     BitSet header = new BitSet(96);
+    byte[] packetHeader = new byte[12];
 
     // set ID to be a random 16 bit number
     setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0}, ID_head, header);
@@ -82,7 +83,9 @@ public class DNSBitManipulator {
     // ARCOUNT is not read in queries
     setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, ARCOUNT_head, header);
 
-    return header.toByteArray();
+    System.out.println("Cardinality = " + header.cardinality());
+    packetHeader = header.toByteArray(); // this method is not to be trusted
+    return packetHeader;
   }
 
   public byte[] createQuestion(String[] validData) {
@@ -160,6 +163,8 @@ public class DNSBitManipulator {
     // set QCLASS to show Internet query (0001)
     return new byte[] {0, 0, 0, 1};
   }
+
+  public byte[] toByteArray(BitSet b) {}
 
   // getters
 

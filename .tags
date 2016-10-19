@@ -4,12 +4,12 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-AA_head	DNSBitManipulator.java	/^  private int AA_head = 22;$/;"	f	class:DNSBitManipulator	file:
+AA_head	DNSBitManipulator.java	/^  private int AA_head = 21;$/;"	f	class:DNSBitManipulator	file:
 AA_tail	DNSBitManipulator.java	/^  private int AA_tail = TC_head;$/;"	f	class:DNSBitManipulator	file:
-ANCOUNT_head	DNSBitManipulator.java	/^  private int ANCOUNT_head = 49;$/;"	f	class:DNSBitManipulator	file:
+ANCOUNT_head	DNSBitManipulator.java	/^  private int ANCOUNT_head = 48;$/;"	f	class:DNSBitManipulator	file:
 ANCOUNT_tail	DNSBitManipulator.java	/^  private int ANCOUNT_tail = NSCOUNT_head;$/;"	f	class:DNSBitManipulator	file:
-ARCOUNT_head	DNSBitManipulator.java	/^  private int ARCOUNT_head = 81;$/;"	f	class:DNSBitManipulator	file:
-ARCOUNT_tail	DNSBitManipulator.java	/^  private int ARCOUNT_tail = 97;$/;"	f	class:DNSBitManipulator	file:
+ARCOUNT_head	DNSBitManipulator.java	/^  private int ARCOUNT_head = 80;$/;"	f	class:DNSBitManipulator	file:
+ARCOUNT_tail	DNSBitManipulator.java	/^  private int ARCOUNT_tail = 95;$/;"	f	class:DNSBitManipulator	file:
 DNSBitManipulator	DNSBitManipulator.java	/^  public DNSBitManipulator() {}$/;"	m	class:DNSBitManipulator
 DNSBitManipulator	DNSBitManipulator.java	/^public class DNSBitManipulator {$/;"	c
 DNSClient	DNSClient.java	/^public class DNSClient {$/;"	c
@@ -19,23 +19,23 @@ DNSReceived	DNSReceiver.java	/^  public void DNSReceived(int timeTaken, int trie
 DNSReceiver	DNSReceiver.java	/^public class DNSReceiver{$/;"	c
 ID_head	DNSBitManipulator.java	/^  private int ID_head = 0;$/;"	f	class:DNSBitManipulator	file:
 ID_tail	DNSBitManipulator.java	/^  private int ID_tail = QR_head;$/;"	f	class:DNSBitManipulator	file:
-NSCOUNT_head	DNSBitManipulator.java	/^  private int NSCOUNT_head = 65;$/;"	f	class:DNSBitManipulator	file:
+NSCOUNT_head	DNSBitManipulator.java	/^  private int NSCOUNT_head = 64;$/;"	f	class:DNSBitManipulator	file:
 NSCOUNT_tail	DNSBitManipulator.java	/^  private int NSCOUNT_tail = ARCOUNT_head;$/;"	f	class:DNSBitManipulator	file:
-OPCODE_head	DNSBitManipulator.java	/^  private int OPCODE_head = 18;$/;"	f	class:DNSBitManipulator	file:
+OPCODE_head	DNSBitManipulator.java	/^  private int OPCODE_head = 17;$/;"	f	class:DNSBitManipulator	file:
 OPCODE_tail	DNSBitManipulator.java	/^  private int OPCODE_tail = AA_head;$/;"	f	class:DNSBitManipulator	file:
-QDCOUNT_head	DNSBitManipulator.java	/^  private int QDCOUNT_head = 33;$/;"	f	class:DNSBitManipulator	file:
+QDCOUNT_head	DNSBitManipulator.java	/^  private int QDCOUNT_head = 32;$/;"	f	class:DNSBitManipulator	file:
 QDCOUNT_tail	DNSBitManipulator.java	/^  private int QDCOUNT_tail = ANCOUNT_head;$/;"	f	class:DNSBitManipulator	file:
-QR_head	DNSBitManipulator.java	/^  private int QR_head = 17;$/;"	f	class:DNSBitManipulator	file:
+QR_head	DNSBitManipulator.java	/^  private int QR_head = 16;$/;"	f	class:DNSBitManipulator	file:
 QR_tail	DNSBitManipulator.java	/^  private int QR_tail = OPCODE_head;$/;"	f	class:DNSBitManipulator	file:
-RA_head	DNSBitManipulator.java	/^  private int RA_head = 25;$/;"	f	class:DNSBitManipulator	file:
+RA_head	DNSBitManipulator.java	/^  private int RA_head = 24;$/;"	f	class:DNSBitManipulator	file:
 RA_tail	DNSBitManipulator.java	/^  private int RA_tail = Z_head;$/;"	f	class:DNSBitManipulator	file:
-RCODE_head	DNSBitManipulator.java	/^  private int RCODE_head = 29;$/;"	f	class:DNSBitManipulator	file:
+RCODE_head	DNSBitManipulator.java	/^  private int RCODE_head = 28;$/;"	f	class:DNSBitManipulator	file:
 RCODE_tail	DNSBitManipulator.java	/^  private int RCODE_tail = QDCOUNT_head;$/;"	f	class:DNSBitManipulator	file:
-RD_head	DNSBitManipulator.java	/^  private int RD_head = 24;$/;"	f	class:DNSBitManipulator	file:
+RD_head	DNSBitManipulator.java	/^  private int RD_head = 23;$/;"	f	class:DNSBitManipulator	file:
 RD_tail	DNSBitManipulator.java	/^  private int RD_tail = RA_head;$/;"	f	class:DNSBitManipulator	file:
-TC_head	DNSBitManipulator.java	/^  private int TC_head = 23;$/;"	f	class:DNSBitManipulator	file:
+TC_head	DNSBitManipulator.java	/^  private int TC_head = 22;$/;"	f	class:DNSBitManipulator	file:
 TC_tail	DNSBitManipulator.java	/^  private int TC_tail = RD_head;$/;"	f	class:DNSBitManipulator	file:
-Z_head	DNSBitManipulator.java	/^  private int Z_head = 26;$/;"	f	class:DNSBitManipulator	file:
+Z_head	DNSBitManipulator.java	/^  private int Z_head = 25;$/;"	f	class:DNSBitManipulator	file:
 Z_tail	DNSBitManipulator.java	/^  private int Z_tail = RCODE_head;$/;"	f	class:DNSBitManipulator	file:
 createHeader	DNSBitManipulator.java	/^  public byte[] createHeader() {$/;"	m	class:DNSBitManipulator
 createPacket	DNSPacketValidator.java	/^  public byte[] createPacket() {$/;"	m	class:DNSPacketValidator
@@ -57,6 +57,7 @@ receivedPacket	DNSReceiver.java	/^byte[] receivedPacket = new byte[2048];$/;"	f	
 setArrBit	DNSBitManipulator.java	/^  public void setArrBit(int[] value, int location, BitSet msg) {$/;"	m	class:DNSBitManipulator
 setBit	DNSBitManipulator.java	/^  public void setBit(int value, int location, BitSet msg) {$/;"	m	class:DNSBitManipulator
 timeTaken	DNSReceiver.java	/^int timeTaken;$/;"	f	class:DNSReceiver
+toByteArray	DNSBitManipulator.java	/^  public byte[] toByteArray(BitSet b) {}$/;"	m	class:DNSBitManipulator
 translateIPAddress	DNSClient.java	/^	public static byte[] translateIPAddress(String ip) {$/;"	m	class:DNSClient
 tries	DNSReceiver.java	/^int tries;$/;"	f	class:DNSReceiver
 validData	DNSPacketValidator.java	/^  private String[] validData = new String[5];$/;"	f	class:DNSPacketValidator	file:
