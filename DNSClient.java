@@ -12,7 +12,7 @@ public class DNSClient {
 
 		// creating packet
 		byte[] sendData = packetValidator.createPacket();
-		System.out.println(Arrays.toString(sendData));
+		printbyte(sendData);
 
 		// get the options from the user
 		String[] validData = new String[5];
@@ -55,7 +55,7 @@ public class DNSClient {
 
 		System.out.println("ReceivePacket: " + receivePacket);
 		printbyte(receivePacket.getData());
-		
+
 		// Extract the sentence (as a String object) from the received byte stream
 		// String modifiedSentence = new String(receivePacket.getData());
 		// System.out.println("From self: " + sentence);
@@ -99,14 +99,19 @@ public class DNSClient {
 	public static void printbyte(byte[] b) {
 		System.out.println("length = " + b.length);
 		for (int i = 0; i < b.length; i++) {
-			System.out.print(b[i]);
+			String spacer = "";
+			if (b[i] > 10 || b[i] < 0) {
+				spacer = " ";
+			}
+			System.out.print(spacer + b[i] + spacer);
 		}
+		System.out.println();
 	}
 
 	public static void print(String[] s) {
 		System.out.println("length = " + s.length);
 		for (int i = 0; i < s.length; i++) {
-			System.out.println(s[i]);
+			System.out.print(s[i] + " ");
 		}
 	}
 }
