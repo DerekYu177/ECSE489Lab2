@@ -1,14 +1,22 @@
 import java.util.Arrays;
 import java.util.BitSet;
 
-public class DNSPacketHeader {
+public class DNSBitManipulator {
   private BitSet header = new BitSet(96);
   // constructor
 
   // need to accept proper inputs (?)
-  public DNSPacketHeader() {}
+  public DNSBitManipulator(String[] validData) {
+    String dnsName, domainName, timeOut, maxRetries, port, queryType;
+    dnsName = validData[0];
+    domainName = validData[1];
+    timeOut = validData[2];
+    maxRetries = validData[3];
+    port = validData[4];
+    queryType = validData[5];
+  }
 
-  public byte[] createPacket() {
+  public byte[] createHeader() {
     int ID = 0;
     int QR = 17;
     int OPCODE = 18;
