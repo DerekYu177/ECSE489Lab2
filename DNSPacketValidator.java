@@ -27,7 +27,7 @@ public class DNSPacketValidator {
       packet[packetHeader.length + j] = packetQuestion[j];
     }
 
-    return packetHeader;
+    return packet;
   }
 
   public String[] extract(String[] data) {
@@ -61,8 +61,7 @@ public class DNSPacketValidator {
 
     String domainName = data[data.length - 1];
 
-    String[] result = new String[] {dnsName, domainName, timeOut, maxRetries, port, queryType};
-    return result;
+    return new String[] {dnsName, domainName, timeOut, maxRetries, port, queryType};
   }
 
   // getters

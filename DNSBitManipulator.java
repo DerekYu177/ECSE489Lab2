@@ -125,7 +125,7 @@ public class DNSBitManipulator {
 
       // add the bytes from sectionByte into the QNAME_ArrayList
       for (int j = 0; j < sectionByte.length; j++) {
-        QNAME_ArrayList.add(sectionByte[i]);
+        QNAME_ArrayList.add(sectionByte[j]);
       }
     }
 
@@ -135,10 +135,17 @@ public class DNSBitManipulator {
     QNAME_ArrayList.trimToSize();
 
     byte[] QNAME = new byte[QNAME_ArrayList.size()];
+
+    for (int i = 0; i < QNAME.length; i++) {
+      QNAME[i] = QNAME_ArrayList.get(i);
+    }
     return QNAME;
   }
 
   public byte[] queryTypeSetter(String queryType) {
+    if (queryType == null) {
+      return new byte[] {0, 0, 0, 1};
+    }
     switch (queryType) {
       case "MX":
         return new byte[] {0, 0, 0, 15};

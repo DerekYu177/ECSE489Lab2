@@ -11,6 +11,8 @@ public class DNSClient {
 		// creating packet
 		byte[] sendData = packetValidator.createPacket();
 		System.out.println(Arrays.toString(sendData));
+
+		String[] validData = packetValidator.getValidData();
 		// Create a UDP socket
 		// (Note, when no port number is specified, the OS will assign an arbitrary one)
 		// DatagramSocket clientSocket = new DatagramSocket();
