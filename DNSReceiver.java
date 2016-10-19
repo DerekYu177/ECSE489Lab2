@@ -3,16 +3,32 @@ import java.net.*;
 import java.util.Arrays;
 
 
-// Create a packet structure to store data sent back by the server
-// DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
-
-// Receive data from the server
-// clientSocket.receive(receivePacket);
-
 public class DNSReceiver{
+ByteBuffer packetdata;
 int tries;
 int timeTaken;
 byte[] receivedPacket = new byte[2048];
+
+public DNSreader (byte[] receivedData)
+	{
+
+		//Initialize byte buffer
+    //put array of data in it
+		packetData = ByteBuffer.allocate(receivedData.length);
+		packetData.put(receivedData);
+		packetData.position(0);
+
+	}
+
+
+
+
+
+//printout if sent ID is not equal to receive ID
+System.out.println("ERROR\tDifferent Query ID and Response ID");
+//Do not execute rest of code if IDs are different
+
+
 
   public void DNSReceived(int timeTaken, int tries)
     {
