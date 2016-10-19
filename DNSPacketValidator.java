@@ -10,19 +10,22 @@ public class DNSPacketValidator {
   }
 
   public byte[] createPacket() {
-    // create empty packet full
-    byte[] packet = new byte[40];
-
-    // header and the question bodies are created separately
-    byte[] packetHeader = new byte[12];
-    byte[] packetQuestion = new byte[8];
-
     String[] validData = extract(this.input);
 
     DNSBitManipulator dnsbit = new DNSBitManipulator();
 
-    packetHeader = dnsbit.createHeader();
-    packetQuestion = dnsbit.createQuestion(validData);
+    byte[] packetHeader = dnsbit.createHeader();
+    byte[] packetQuestion = dnsbit.createQuestion(validData);
+
+    byte[] packet = new byte[packetHeader.length + packetQuestion.length];
+
+    for (int i = 0; i < packetHeader.length; i++) {
+      packet[i] = packetHeader[i];
+    }
+
+    for (int j = 0; j < packetQuestion.length; j++) {
+      packet[packetHeader.length + j] = packetQuestion[j];
+    }
 
     return packetHeader;
   }

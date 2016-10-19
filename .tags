@@ -15,6 +15,7 @@ DNSBitManipulator	DNSBitManipulator.java	/^public class DNSBitManipulator {$/;"	
 DNSClient	DNSClient.java	/^public class DNSClient {$/;"	c
 DNSPacketValidator	DNSPacketValidator.java	/^  public DNSPacketValidator(String[] input) {$/;"	m	class:DNSPacketValidator
 DNSPacketValidator	DNSPacketValidator.java	/^public class DNSPacketValidator {$/;"	c
+DNSReceived	DNSReceiver.java	/^  public void DNSReceived(int timeTaken, int tries)$/;"	m	class:DNSReceiver
 DNSReceiver	DNSReceiver.java	/^public class DNSReceiver{$/;"	c
 ID_head	DNSBitManipulator.java	/^  private int ID_head = 0;$/;"	f	class:DNSBitManipulator	file:
 ID_tail	DNSBitManipulator.java	/^  private int ID_tail = QR_head;$/;"	f	class:DNSBitManipulator	file:
@@ -48,6 +49,9 @@ input	DNSPacketValidator.java	/^  private String[] input;$/;"	f	class:DNSPacketV
 main	DNSClient.java	/^	public static void main(String args[]) throws Exception$/;"	m	class:DNSClient
 queryClassSetter	DNSBitManipulator.java	/^  public byte[] queryClassSetter() {$/;"	m	class:DNSBitManipulator
 queryTypeSetter	DNSBitManipulator.java	/^  public byte[] queryTypeSetter(String queryType) {$/;"	m	class:DNSBitManipulator
+receivedPacket	DNSReceiver.java	/^byte[] receivedPacket = new byte[2048];$/;"	f	class:DNSReceiver
 setArrBit	DNSBitManipulator.java	/^  public void setArrBit(int[] value, int location, BitSet msg) {$/;"	m	class:DNSBitManipulator
 setBit	DNSBitManipulator.java	/^  public void setBit(int value, int location, BitSet msg) {$/;"	m	class:DNSBitManipulator
+timeTaken	DNSReceiver.java	/^int timeTaken;$/;"	f	class:DNSReceiver
+tries	DNSReceiver.java	/^int tries;$/;"	f	class:DNSReceiver
 validData	DNSPacketValidator.java	/^  private String[] validData;$/;"	f	class:DNSPacketValidator	file:

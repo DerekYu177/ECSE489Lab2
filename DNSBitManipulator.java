@@ -100,11 +100,11 @@ public class DNSBitManipulator {
     }
 
     for (int j = 0; j < QTYPE.length; j++) {
-      question[j + QNAME.length] = QTYPE[j];
+      question[QNAME.length + j] = QTYPE[j];
     }
 
     for (int k = 0; k < QCLASS.length; k++) {
-      question[k + QNAME.length + QTYPE.length] = QCLASS[k];
+      question[QNAME.length + QTYPE.length + k] = QCLASS[k];
     }
 
     return question;
