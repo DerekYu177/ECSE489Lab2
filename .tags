@@ -39,13 +39,15 @@ Z_tail	DNSBitManipulator.java	/^  private int Z_tail = RCODE_head;$/;"	f	class:D
 createHeader	DNSBitManipulator.java	/^  public byte[] createHeader() {$/;"	m	class:DNSBitManipulator
 createPacket	DNSPacketValidator.java	/^  public byte[] createPacket() {$/;"	m	class:DNSPacketValidator
 createQuestion	DNSBitManipulator.java	/^  public byte[] createQuestion(String[] validData) {$/;"	m	class:DNSBitManipulator
+domainNameConverter	DNSBitManipulator.java	/^  public byte[] domainNameConverter(String domainName) {$/;"	m	class:DNSBitManipulator
 extract	DNSPacketValidator.java	/^  public String[] extract(String[] data) {$/;"	m	class:DNSPacketValidator
 getArrBit	DNSBitManipulator.java	/^  public int[] getArrBit(int firstBit, int lastBit, BitSet msg) {$/;"	m	class:DNSBitManipulator
 getBit	DNSBitManipulator.java	/^  public int getBit(int bit, BitSet msg) {$/;"	m	class:DNSBitManipulator
-getHeader	DNSBitManipulator.java	/^  public void getHeader(byte[] header) {$/;"	m	class:DNSBitManipulator
 getValidData	DNSPacketValidator.java	/^  public String[] getValidData() {$/;"	m	class:DNSPacketValidator
 input	DNSPacketValidator.java	/^  private String[] input;$/;"	f	class:DNSPacketValidator	file:
 main	DNSClient.java	/^	public static void main(String args[]) throws Exception$/;"	m	class:DNSClient
+queryClassSetter	DNSBitManipulator.java	/^  public byte[] queryClassSetter() {$/;"	m	class:DNSBitManipulator
+queryTypeSetter	DNSBitManipulator.java	/^  public byte[] queryTypeSetter(String queryType) {$/;"	m	class:DNSBitManipulator
 setArrBit	DNSBitManipulator.java	/^  public void setArrBit(int[] value, int location, BitSet msg) {$/;"	m	class:DNSBitManipulator
 setBit	DNSBitManipulator.java	/^  public void setBit(int value, int location, BitSet msg) {$/;"	m	class:DNSBitManipulator
 validData	DNSPacketValidator.java	/^  private String[] validData;$/;"	f	class:DNSPacketValidator	file:

@@ -1,8 +1,11 @@
 import java.util.Arrays;
 import java.util.BitSet;
+import java.util.ArrayList;
+import java.nio.charset.*;
 
 public class DNSBitManipulator {
 
+  // for HEADERS
   // the placement of each section is determined by the head
   private int ID_head = 0;
   private int QR_head = 17;
@@ -33,7 +36,6 @@ public class DNSBitManipulator {
   private int ANCOUNT_tail = NSCOUNT_head;
   private int NSCOUNT_tail = ARCOUNT_head;
   private int ARCOUNT_tail = 97;
-
 
   // constructor
   public DNSBitManipulator() {}
@@ -80,28 +82,76 @@ public class DNSBitManipulator {
     // ARCOUNT is not read in queries
     setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, ARCOUNT_head, header);
 
-    System.out.println(header.toString());
     return header.toByteArray();
   }
 
   public byte[] createQuestion(String[] validData) {
-    String dnsName, domainName, timeOut, maxRetries, port, queryType;
-    dnsName = validData[0];
-    domainName = validData[1];
-    timeOut = validData[2];
-    maxRetries = validData[3];
-    port = validData[4];
-    queryType = validData[5];
+    String domainName = validData[1];
+    String queryType = validData[5];
 
-    //TODO: convert domainName into sequence of bits
+    byte[] QNAME = domainNameConverter(domainName);
+    byte[] QTYPE = queryTypeSetter(queryType);
+    byte[] QCLASS = queryClassSetter();
 
-    // the question field QNAME is at most 63 bytes long
-    BitSet question = new BitSet(536);
-    return question.toByteArray();
+    byte[] question = new byte[QNAME.length + QTYPE.length + QCLASS.length];
+
+    for (int i = 0; i < QNAME.length; i++) {
+      question[i] = QNAME[i];
+    }
+
+    for (int j = 0; j < QTYPE.length; j++) {
+      question[j + QNAME.length] = QTYPE[j];
+    }
+
+    for (int k = 0; k < QCLASS.length; k++) {
+      question[k + QNAME.length + QTYPE.length] = QCLASS[k];
+    }
+
+    return question;
   }
 
-  public void getHeader(byte[] header) {
+  public byte[] domainNameConverter(String domainName) {
+    ArrayList<Byte> QNAME_ArrayList = new ArrayList<Byte>();
+    String[] domainNameSections = domainName.split("\\.");
 
+    for (int i = 0; i < domainNameSections.length; i++) {
+      String section = domainNameSections[i];
+
+      // prepend each section with its length
+      QNAME_ArrayList.add((byte)section.length());
+
+      // convert each section into a byte[]
+      byte[] sectionByte = section.getBytes(StandardCharsets.US_ASCII);
+
+      // add the bytes from sectionByte into the QNAME_ArrayList
+      for (int j = 0; j < sectionByte.length; j++) {
+        QNAME_ArrayList.add(sectionByte[i]);
+      }
+    }
+
+    // null byte to signify end of QNAME
+    QNAME_ArrayList.add((byte)0);
+
+    QNAME_ArrayList.trimToSize();
+
+    byte[] QNAME = new byte[QNAME_ArrayList.size()];
+    return QNAME;
+  }
+
+  public byte[] queryTypeSetter(String queryType) {
+    switch (queryType) {
+      case "MX":
+        return new byte[] {0, 0, 0, 15};
+      case "NS":
+        return new byte[] {0, 0, 0, 2};
+      default:
+        return new byte[] {0, 0, 0, 1};
+    }
+  }
+
+  public byte[] queryClassSetter() {
+    // set QCLASS to show Internet query (0001)
+    return new byte[] {0, 0, 0, 1};
   }
 
   // getters
