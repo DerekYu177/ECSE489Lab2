@@ -3,8 +3,88 @@ import java.util.BitSet;
 
 public class DNSBitManipulator {
 
+  // the placement of each section is determined by the head
+  private int ID_head = 0;
+  private int QR_head = 17;
+  private int OPCODE_head = 18;
+  private int AA_head = 22;
+  private int TC_head = 23;
+  private int RD_head = 24;
+  private int RA_head = 25;
+  private int Z_head = 26;
+  private int RCODE_head = 29;
+  private int QDCOUNT_head = 33;
+  private int ANCOUNT_head = 49;
+  private int NSCOUNT_head = 65;
+  private int ARCOUNT_head = 81;
+
+  // get statements require the first and last bit
+  // the convention is inclusive first bit and exclusive last bit
+  private int ID_tail = QR_head;
+  private int QR_tail = OPCODE_head;
+  private int OPCODE_tail = AA_head;
+  private int AA_tail = TC_head;
+  private int TC_tail = RD_head;
+  private int RD_tail = RA_head;
+  private int RA_tail = Z_head;
+  private int Z_tail = RCODE_head;
+  private int RCODE_tail = QDCOUNT_head;
+  private int QDCOUNT_tail = ANCOUNT_head;
+  private int ANCOUNT_tail = NSCOUNT_head;
+  private int NSCOUNT_tail = ARCOUNT_head;
+  private int ARCOUNT_tail = 97;
+
+
   // constructor
-  public DNSBitManipulator(String[] validData) {
+  public DNSBitManipulator() {}
+
+  public byte[] createHeader() {
+    BitSet header = new BitSet(96);
+
+    // set ID to be a random 16 bit number
+    setArrBit(new int[] {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0}, ID_head, header);
+
+    // set QR to be a query (0)
+    setBit(0, QR_head, header);
+
+    // set OPCODE to be standard query (0000)
+    setArrBit(new int[] {0,0,0,0}, OPCODE_head, header);
+
+    // AA bit is not read in queries
+    setBit(0, AA_head, header);
+
+    // set TC to show non-truncated message
+    setBit(0, TC_head, header);
+
+    // set RD to be recursive query (1)
+    setBit(1, RD_head, header);
+
+    // RA bit is not read in queries
+    setBit(0, RA_head, header);
+
+    // set Z to normal query (000)
+    setArrBit(new int[] {0, 0, 0}, Z_head, header);
+
+    // RCODE is not read in queries
+    setArrBit(new int[] {0, 0, 0, 0}, RCODE_head, header);
+
+    // set QDCOUNT to show single query (0)
+    setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, QDCOUNT_head, header);
+
+    // ANCOUNT is not read in queries
+    setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, ANCOUNT_head, header);
+
+    // NSCOUNT is not read in queries
+    setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, NSCOUNT_head, header);
+
+    // ARCOUNT is not read in queries
+    setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, ARCOUNT_head, header);
+
+    System.out.println(header.toString());
+    return header.toByteArray();
+  }
+
+  public byte[] createQuestion(String[] validData) {
     String dnsName, domainName, timeOut, maxRetries, port, queryType;
     dnsName = validData[0];
     domainName = validData[1];
@@ -12,141 +92,24 @@ public class DNSBitManipulator {
     maxRetries = validData[3];
     port = validData[4];
     queryType = validData[5];
-  }
 
-  public byte[] createHeader() {
-    BitSet header = new BitSet(96);
+    //TODO: convert domainName into sequence of bits
 
-    int ID = 0;
-    int QR = 17;
-    int OPCODE = 18;
-    int AA = 22;
-    int TC = 23;
-    int RD = 24;
-    int RA = 25;
-    int Z = 26;
-    int RCODE = 29;
-    int QDCOUNT = 33;
-    int ANCOUNT = 49;
-    int NSCOUNT = 65;
-    int ARCOUNT = 81;
-
-    // set ID to be a random 16 bit number
-    setArrBit(new int[] {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0}, ID, header);
-
-    // set QR to be a query (0)
-    setBit(0, QR, header);
-
-    // set OPCODE to be standard query (0000)
-    setArrBit(new int[] {0,0,0,0}, OPCODE, header);
-
-    // AA bit is not read in queries
-    setBit(0, AA, header);
-
-    // set TC to show non-truncated message
-    setBit(0, TC, header);
-
-    // set RD to be recursive query (1)
-    setBit(1, RD, header);
-
-    // RA bit is not read in queries
-    setBit(0, RA, header);
-
-    // set Z to normal query (000)
-    setArrBit(new int[] {0, 0, 0}, Z, header);
-
-    // RCODE is not read in queries
-    setArrBit(new int[] {0, 0, 0, 0}, RCODE, header);
-
-    // set QDCOUNT to show single query (0)
-    setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, QDCOUNT, header);
-
-    // ANCOUNT is not read in queries
-    setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, ANCOUNT, header);
-
-    // NSCOUNT is not read in queries
-    setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, NSCOUNT, header);
-
-    // ARCOUNT is not read in queries
-    setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, ARCOUNT, header);
-
-    System.out.println(header.toString());
-    return header.toByteArray();
-  }
-
-  public byte[] createQuestion() {
     // the question field QNAME is at most 63 bytes long
     BitSet question = new BitSet(536);
-
+    return question.toByteArray();
   }
 
   public void getHeader(byte[] header) {
-    
-  }
 
-  // getters
-
-  public BitSet getID() {
-    return header.get(0, 17);
-  }
-
-  public int getQR() {
-    int result = (header.get(17)) ? 1 : 0;
-    return result;
-  }
-
-  public BitSet getOPCODE() {
-    return header.get(18, 22);
-  }
-
-  public int getAA() {
-    int result = (header.get(22)) ? 1 : 0;
-    return result;
-  }
-
-  public int getTC() {
-    int result = (header.get(23)) ? 1 : 0;
-    return result;
-  }
-
-  public int getRD() {
-    int result = (header.get(24)) ? 1 : 0;
-    return result;
-  }
-
-  public int getRA() {
-    int result = (header.get(25)) ? 1 : 0;
-    return result;
-  }
-
-  public BitSet getZ() {
-    return header.get(26, 29);
-  }
-
-  public BitSet getRCODE() {
-    return header.get(29, 33);
-  }
-
-  public BitSet getQDCOUNT() {
-    return header.get(33, 49);
-  }
-
-  public BitSet getANCOUNT() {
-    return header.get(49, 65);
-  }
-
-  public BitSet getNSCOUNT() {
-    return header.get(65, 81);
-  }
-
-  public BitSet getARCOUNT() {
-    return header.get(81, 97);
   }
 
   // getters
 
   public int[] getArrBit(int firstBit, int lastBit, BitSet msg) {
     int[] result = new int[lastBit - firstBit];
+
+    // get statements are [firstBit, lastBit)
     for (int i = 0; i < lastBit - firstBit; i++) {
       result[i - firstBit] = getBit(firstBit + i, msg);
     }

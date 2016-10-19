@@ -2,6 +2,7 @@ import java.io.*;
 
 public class DNSPacketValidator {
   private String[] input;
+  private String[] validData;
 
   // constructor
   public DNSPacketValidator(String[] input) {
@@ -12,18 +13,16 @@ public class DNSPacketValidator {
     // create empty packet full
     byte[] packet = new byte[40];
 
-    // we are going to create the header and the message separately
+    // header and the question bodies are created separately
     byte[] packetHeader = new byte[12];
-    byte[] packetQuery = new byte[8];
+    byte[] packetQuestion = new byte[8];
 
-    // TODO: identify and extract relevant material for headers
     String[] validData = extract(this.input);
 
-    // TODO: stitch packetHeader and packetQuery together
-    DNSBitManipulator dnsbit = new DNSBitManipulator(validData);
+    DNSBitManipulator dnsbit = new DNSBitManipulator();
 
-    // TODO: use the valid data to create the appropriate packet
     packetHeader = dnsbit.createHeader();
+    packetQuestion = dnsbit.createQuestion(validData);
 
     return packetHeader;
   }
@@ -61,5 +60,11 @@ public class DNSPacketValidator {
 
     String[] result = new String[] {dnsName, domainName, timeOut, maxRetries, port, queryType};
     return result;
+  }
+
+  // getters
+
+  public String[] getValidData() {
+    return validData;
   }
 }

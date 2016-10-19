@@ -4,33 +4,48 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-DNSBitManipulator	DNSBitManipulator.java	/^  public DNSBitManipulator(String[] validData) {$/;"	m	class:DNSBitManipulator
+AA_head	DNSBitManipulator.java	/^  private int AA_head = 22;$/;"	f	class:DNSBitManipulator	file:
+AA_tail	DNSBitManipulator.java	/^  private int AA_tail = TC_head;$/;"	f	class:DNSBitManipulator	file:
+ANCOUNT_head	DNSBitManipulator.java	/^  private int ANCOUNT_head = 49;$/;"	f	class:DNSBitManipulator	file:
+ANCOUNT_tail	DNSBitManipulator.java	/^  private int ANCOUNT_tail = NSCOUNT_head;$/;"	f	class:DNSBitManipulator	file:
+ARCOUNT_head	DNSBitManipulator.java	/^  private int ARCOUNT_head = 81;$/;"	f	class:DNSBitManipulator	file:
+ARCOUNT_tail	DNSBitManipulator.java	/^  private int ARCOUNT_tail = 97;$/;"	f	class:DNSBitManipulator	file:
+DNSBitManipulator	DNSBitManipulator.java	/^  public DNSBitManipulator() {}$/;"	m	class:DNSBitManipulator
 DNSBitManipulator	DNSBitManipulator.java	/^public class DNSBitManipulator {$/;"	c
 DNSClient	DNSClient.java	/^public class DNSClient {$/;"	c
 DNSPacketValidator	DNSPacketValidator.java	/^  public DNSPacketValidator(String[] input) {$/;"	m	class:DNSPacketValidator
 DNSPacketValidator	DNSPacketValidator.java	/^public class DNSPacketValidator {$/;"	c
 DNSReceiver	DNSReceiver.java	/^public class DNSReceiver{$/;"	c
+ID_head	DNSBitManipulator.java	/^  private int ID_head = 0;$/;"	f	class:DNSBitManipulator	file:
+ID_tail	DNSBitManipulator.java	/^  private int ID_tail = QR_head;$/;"	f	class:DNSBitManipulator	file:
+NSCOUNT_head	DNSBitManipulator.java	/^  private int NSCOUNT_head = 65;$/;"	f	class:DNSBitManipulator	file:
+NSCOUNT_tail	DNSBitManipulator.java	/^  private int NSCOUNT_tail = ARCOUNT_head;$/;"	f	class:DNSBitManipulator	file:
+OPCODE_head	DNSBitManipulator.java	/^  private int OPCODE_head = 18;$/;"	f	class:DNSBitManipulator	file:
+OPCODE_tail	DNSBitManipulator.java	/^  private int OPCODE_tail = AA_head;$/;"	f	class:DNSBitManipulator	file:
+QDCOUNT_head	DNSBitManipulator.java	/^  private int QDCOUNT_head = 33;$/;"	f	class:DNSBitManipulator	file:
+QDCOUNT_tail	DNSBitManipulator.java	/^  private int QDCOUNT_tail = ANCOUNT_head;$/;"	f	class:DNSBitManipulator	file:
+QR_head	DNSBitManipulator.java	/^  private int QR_head = 17;$/;"	f	class:DNSBitManipulator	file:
+QR_tail	DNSBitManipulator.java	/^  private int QR_tail = OPCODE_head;$/;"	f	class:DNSBitManipulator	file:
+RA_head	DNSBitManipulator.java	/^  private int RA_head = 25;$/;"	f	class:DNSBitManipulator	file:
+RA_tail	DNSBitManipulator.java	/^  private int RA_tail = Z_head;$/;"	f	class:DNSBitManipulator	file:
+RCODE_head	DNSBitManipulator.java	/^  private int RCODE_head = 29;$/;"	f	class:DNSBitManipulator	file:
+RCODE_tail	DNSBitManipulator.java	/^  private int RCODE_tail = QDCOUNT_head;$/;"	f	class:DNSBitManipulator	file:
+RD_head	DNSBitManipulator.java	/^  private int RD_head = 24;$/;"	f	class:DNSBitManipulator	file:
+RD_tail	DNSBitManipulator.java	/^  private int RD_tail = RA_head;$/;"	f	class:DNSBitManipulator	file:
+TC_head	DNSBitManipulator.java	/^  private int TC_head = 23;$/;"	f	class:DNSBitManipulator	file:
+TC_tail	DNSBitManipulator.java	/^  private int TC_tail = RD_head;$/;"	f	class:DNSBitManipulator	file:
+Z_head	DNSBitManipulator.java	/^  private int Z_head = 26;$/;"	f	class:DNSBitManipulator	file:
+Z_tail	DNSBitManipulator.java	/^  private int Z_tail = RCODE_head;$/;"	f	class:DNSBitManipulator	file:
 createHeader	DNSBitManipulator.java	/^  public byte[] createHeader() {$/;"	m	class:DNSBitManipulator
 createPacket	DNSPacketValidator.java	/^  public byte[] createPacket() {$/;"	m	class:DNSPacketValidator
-createQuestion	DNSBitManipulator.java	/^  public byte[] createQuestion() {$/;"	m	class:DNSBitManipulator
+createQuestion	DNSBitManipulator.java	/^  public byte[] createQuestion(String[] validData) {$/;"	m	class:DNSBitManipulator
 extract	DNSPacketValidator.java	/^  public String[] extract(String[] data) {$/;"	m	class:DNSPacketValidator
-getAA	DNSBitManipulator.java	/^  public int getAA() {$/;"	m	class:DNSBitManipulator
-getANCOUNT	DNSBitManipulator.java	/^  public BitSet getANCOUNT() {$/;"	m	class:DNSBitManipulator
-getARCOUNT	DNSBitManipulator.java	/^  public BitSet getARCOUNT() {$/;"	m	class:DNSBitManipulator
 getArrBit	DNSBitManipulator.java	/^  public int[] getArrBit(int firstBit, int lastBit, BitSet msg) {$/;"	m	class:DNSBitManipulator
 getBit	DNSBitManipulator.java	/^  public int getBit(int bit, BitSet msg) {$/;"	m	class:DNSBitManipulator
 getHeader	DNSBitManipulator.java	/^  public void getHeader(byte[] header) {$/;"	m	class:DNSBitManipulator
-getID	DNSBitManipulator.java	/^  public BitSet getID() {$/;"	m	class:DNSBitManipulator
-getNSCOUNT	DNSBitManipulator.java	/^  public BitSet getNSCOUNT() {$/;"	m	class:DNSBitManipulator
-getOPCODE	DNSBitManipulator.java	/^  public BitSet getOPCODE() {$/;"	m	class:DNSBitManipulator
-getQDCOUNT	DNSBitManipulator.java	/^  public BitSet getQDCOUNT() {$/;"	m	class:DNSBitManipulator
-getQR	DNSBitManipulator.java	/^  public int getQR() {$/;"	m	class:DNSBitManipulator
-getRA	DNSBitManipulator.java	/^  public int getRA() {$/;"	m	class:DNSBitManipulator
-getRCODE	DNSBitManipulator.java	/^  public BitSet getRCODE() {$/;"	m	class:DNSBitManipulator
-getRD	DNSBitManipulator.java	/^  public int getRD() {$/;"	m	class:DNSBitManipulator
-getTC	DNSBitManipulator.java	/^  public int getTC() {$/;"	m	class:DNSBitManipulator
-getZ	DNSBitManipulator.java	/^  public BitSet getZ() {$/;"	m	class:DNSBitManipulator
+getValidData	DNSPacketValidator.java	/^  public String[] getValidData() {$/;"	m	class:DNSPacketValidator
 input	DNSPacketValidator.java	/^  private String[] input;$/;"	f	class:DNSPacketValidator	file:
 main	DNSClient.java	/^	public static void main(String args[]) throws Exception$/;"	m	class:DNSClient
 setArrBit	DNSBitManipulator.java	/^  public void setArrBit(int[] value, int location, BitSet msg) {$/;"	m	class:DNSBitManipulator
 setBit	DNSBitManipulator.java	/^  public void setBit(int value, int location, BitSet msg) {$/;"	m	class:DNSBitManipulator
+validData	DNSPacketValidator.java	/^  private String[] validData;$/;"	f	class:DNSPacketValidator	file:
