@@ -5,7 +5,7 @@ import java.nio.charset.*;
 
 public class DNSBitManipulator {
 
-  // for HEADERS
+  // for createHeader
   // the placement of each section is determined by the head
   private int ID_head = 0;
   private int QR_head = 17;
@@ -44,7 +44,7 @@ public class DNSBitManipulator {
     BitSet header = new BitSet(96);
 
     // set ID to be a random 16 bit number
-    setArrBit(new int[] {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0}, ID_head, header);
+    setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0}, ID_head, header);
 
     // set QR to be a query (0)
     setBit(0, QR_head, header);

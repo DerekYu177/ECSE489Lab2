@@ -18,24 +18,27 @@ public class DNSClient {
 		String[] validData = new String[5];
 		validData = packetValidator.getValidData();
 
-		System.out.println("validData.length = " + validData.length);
-		for (int i = 0; i < validData.length; i++) {
-			System.out.println(validData[i]);
-		}
+		print(validData);
 
 		int port = portNumber(validData[4]);
-		byte[] ipAddr = translateIPAddress(validData[0]);
-		InetAddress ipAddress = InetAddress.getByAddress(ipAddr);
-		System.out.println(ipAddress);
+
+		System.out.println(port);
+
+		// current methodology does not work
+		// byte[] ipAddr = translateIPAddress(validData[0]);
+		// InetAddress ipAddress = InetAddress.getByAddress(ipAddr);
+		// System.out.println(ipAddress);
+
+		// THIS IS NOT THE CORRECT WAY
+		InetAddress ipAddress = InetAddress.getByName(validData[0]);
 
 		// create UDP socket
 		DatagramSocket clientSocket = new DatagramSocket();
 
-		// Allocate buffers for the data to be sent and received
+		// Allocate buffers for the data to be received
 		byte[] receiveData = new byte[1024];
 
 		// Create a UDP packet to be sent to the server
-		// This involves specifying the sender's address and port number
 		DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, ipAddress, port);
 
 		// Send the packet
@@ -44,11 +47,15 @@ public class DNSClient {
 		// Create a packet structure to store data sent back by the server
 		DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
 
-		System.out.println(receiveData);
+		System.out.println("receiveData" + receiveData);
+		printbyte(receiveData);
 
 		// Receive data from the server
-		// clientSocket.receive(receivePacket);
+		clientSocket.receive(receivePacket);
 
+		System.out.println("ReceivePacket: " + receivePacket);
+		printbyte(receivePacket.getData());
+		
 		// Extract the sentence (as a String object) from the received byte stream
 		// String modifiedSentence = new String(receivePacket.getData());
 		// System.out.println("From self: " + sentence);
@@ -85,5 +92,21 @@ public class DNSClient {
 			System.out.println(value);
 		}
     return bb.array();
+	}
+
+	// debug methods
+
+	public static void printbyte(byte[] b) {
+		System.out.println("length = " + b.length);
+		for (int i = 0; i < b.length; i++) {
+			System.out.print(b[i]);
+		}
+	}
+
+	public static void print(String[] s) {
+		System.out.println("length = " + s.length);
+		for (int i = 0; i < s.length; i++) {
+			System.out.println(s[i]);
+		}
 	}
 }

@@ -49,6 +49,8 @@ input	DNSPacketValidator.java	/^  private String[] input;$/;"	f	class:DNSPacketV
 intToByte	DNSClient.java	/^	public static byte[] intToByte(final int i) {$/;"	m	class:DNSClient
 main	DNSClient.java	/^	public static void main(String args[]) throws Exception$/;"	m	class:DNSClient
 portNumber	DNSClient.java	/^	public static int portNumber(String port) {$/;"	m	class:DNSClient
+print	DNSClient.java	/^	public static void print(String[] s) {$/;"	m	class:DNSClient
+printbyte	DNSClient.java	/^	public static void printbyte(byte[] b) {$/;"	m	class:DNSClient
 queryClassSetter	DNSBitManipulator.java	/^  public byte[] queryClassSetter() {$/;"	m	class:DNSBitManipulator
 queryTypeSetter	DNSBitManipulator.java	/^  public byte[] queryTypeSetter(String queryType) {$/;"	m	class:DNSBitManipulator
 receivedPacket	DNSReceiver.java	/^byte[] receivedPacket = new byte[2048];$/;"	f	class:DNSReceiver
