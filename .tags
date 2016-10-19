@@ -46,12 +46,15 @@ getArrBit	DNSBitManipulator.java	/^  public int[] getArrBit(int firstBit, int la
 getBit	DNSBitManipulator.java	/^  public int getBit(int bit, BitSet msg) {$/;"	m	class:DNSBitManipulator
 getValidData	DNSPacketValidator.java	/^  public String[] getValidData() {$/;"	m	class:DNSPacketValidator
 input	DNSPacketValidator.java	/^  private String[] input;$/;"	f	class:DNSPacketValidator	file:
+intToByte	DNSClient.java	/^	public static byte[] intToByte(final int i) {$/;"	m	class:DNSClient
 main	DNSClient.java	/^	public static void main(String args[]) throws Exception$/;"	m	class:DNSClient
+portNumber	DNSClient.java	/^	public static int portNumber(String port) {$/;"	m	class:DNSClient
 queryClassSetter	DNSBitManipulator.java	/^  public byte[] queryClassSetter() {$/;"	m	class:DNSBitManipulator
 queryTypeSetter	DNSBitManipulator.java	/^  public byte[] queryTypeSetter(String queryType) {$/;"	m	class:DNSBitManipulator
 receivedPacket	DNSReceiver.java	/^byte[] receivedPacket = new byte[2048];$/;"	f	class:DNSReceiver
 setArrBit	DNSBitManipulator.java	/^  public void setArrBit(int[] value, int location, BitSet msg) {$/;"	m	class:DNSBitManipulator
 setBit	DNSBitManipulator.java	/^  public void setBit(int value, int location, BitSet msg) {$/;"	m	class:DNSBitManipulator
 timeTaken	DNSReceiver.java	/^int timeTaken;$/;"	f	class:DNSReceiver
+translateIPAddress	DNSClient.java	/^	public static byte[] translateIPAddress(String ip) {$/;"	m	class:DNSClient
 tries	DNSReceiver.java	/^int tries;$/;"	f	class:DNSReceiver
-validData	DNSPacketValidator.java	/^  private String[] validData;$/;"	f	class:DNSPacketValidator	file:
+validData	DNSPacketValidator.java	/^  private String[] validData = new String[5];$/;"	f	class:DNSPacketValidator	file:

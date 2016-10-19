@@ -2,11 +2,12 @@ import java.io.*;
 
 public class DNSPacketValidator {
   private String[] input;
-  private String[] validData;
+  private String[] validData = new String[5];
 
   // constructor
   public DNSPacketValidator(String[] input) {
     this.input = input;
+    this.validData = extract(input);
   }
 
   public byte[] createPacket() {
@@ -67,6 +68,6 @@ public class DNSPacketValidator {
   // getters
 
   public String[] getValidData() {
-    return validData;
+    return this.validData;
   }
 }
