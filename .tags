@@ -9,12 +9,17 @@ DNSBitManipulator	DNSBitManipulator.java	/^public class DNSBitManipulator {$/;"	
 DNSClient	DNSClient.java	/^public class DNSClient {$/;"	c
 DNSPacketValidator	DNSPacketValidator.java	/^  public DNSPacketValidator(String[] input) {$/;"	m	class:DNSPacketValidator
 DNSPacketValidator	DNSPacketValidator.java	/^public class DNSPacketValidator {$/;"	c
+DNSReceiver	DNSReceiver.java	/^public class DNSReceiver{$/;"	c
 createHeader	DNSBitManipulator.java	/^  public byte[] createHeader() {$/;"	m	class:DNSBitManipulator
 createPacket	DNSPacketValidator.java	/^  public byte[] createPacket() {$/;"	m	class:DNSPacketValidator
+createQuestion	DNSBitManipulator.java	/^  public byte[] createQuestion() {$/;"	m	class:DNSBitManipulator
 extract	DNSPacketValidator.java	/^  public String[] extract(String[] data) {$/;"	m	class:DNSPacketValidator
 getAA	DNSBitManipulator.java	/^  public int getAA() {$/;"	m	class:DNSBitManipulator
 getANCOUNT	DNSBitManipulator.java	/^  public BitSet getANCOUNT() {$/;"	m	class:DNSBitManipulator
 getARCOUNT	DNSBitManipulator.java	/^  public BitSet getARCOUNT() {$/;"	m	class:DNSBitManipulator
+getArrBit	DNSBitManipulator.java	/^  public int[] getArrBit(int firstBit, int lastBit, BitSet msg) {$/;"	m	class:DNSBitManipulator
+getBit	DNSBitManipulator.java	/^  public int getBit(int bit, BitSet msg) {$/;"	m	class:DNSBitManipulator
+getHeader	DNSBitManipulator.java	/^  public void getHeader(byte[] header) {$/;"	m	class:DNSBitManipulator
 getID	DNSBitManipulator.java	/^  public BitSet getID() {$/;"	m	class:DNSBitManipulator
 getNSCOUNT	DNSBitManipulator.java	/^  public BitSet getNSCOUNT() {$/;"	m	class:DNSBitManipulator
 getOPCODE	DNSBitManipulator.java	/^  public BitSet getOPCODE() {$/;"	m	class:DNSBitManipulator
@@ -25,8 +30,7 @@ getRCODE	DNSBitManipulator.java	/^  public BitSet getRCODE() {$/;"	m	class:DNSBi
 getRD	DNSBitManipulator.java	/^  public int getRD() {$/;"	m	class:DNSBitManipulator
 getTC	DNSBitManipulator.java	/^  public int getTC() {$/;"	m	class:DNSBitManipulator
 getZ	DNSBitManipulator.java	/^  public BitSet getZ() {$/;"	m	class:DNSBitManipulator
-header	DNSBitManipulator.java	/^  private BitSet header = new BitSet(96);$/;"	f	class:DNSBitManipulator	file:
 input	DNSPacketValidator.java	/^  private String[] input;$/;"	f	class:DNSPacketValidator	file:
 main	DNSClient.java	/^	public static void main(String args[]) throws Exception$/;"	m	class:DNSClient
-setArrBit	DNSBitManipulator.java	/^  public void setArrBit(int[] value, int location) {$/;"	m	class:DNSBitManipulator
-setBit	DNSBitManipulator.java	/^  public void setBit(int value, int location) {$/;"	m	class:DNSBitManipulator
+setArrBit	DNSBitManipulator.java	/^  public void setArrBit(int[] value, int location, BitSet msg) {$/;"	m	class:DNSBitManipulator
+setBit	DNSBitManipulator.java	/^  public void setBit(int value, int location, BitSet msg) {$/;"	m	class:DNSBitManipulator

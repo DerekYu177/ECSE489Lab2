@@ -2,10 +2,8 @@ import java.util.Arrays;
 import java.util.BitSet;
 
 public class DNSBitManipulator {
-  private BitSet header = new BitSet(96);
-  // constructor
 
-  // need to accept proper inputs (?)
+  // constructor
   public DNSBitManipulator(String[] validData) {
     String dnsName, domainName, timeOut, maxRetries, port, queryType;
     dnsName = validData[0];
@@ -17,6 +15,8 @@ public class DNSBitManipulator {
   }
 
   public byte[] createHeader() {
+    BitSet header = new BitSet(96);
+
     int ID = 0;
     int QR = 17;
     int OPCODE = 18;
@@ -32,46 +32,56 @@ public class DNSBitManipulator {
     int ARCOUNT = 81;
 
     // set ID to be a random 16 bit number
-    setArrBit(new int[] {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0}, ID);
+    setArrBit(new int[] {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0}, ID, header);
 
     // set QR to be a query (0)
-    setBit(0, QR);
+    setBit(0, QR, header);
 
     // set OPCODE to be standard query (0000)
-    setArrBit(new int[] {0,0,0,0}, OPCODE);
+    setArrBit(new int[] {0,0,0,0}, OPCODE, header);
 
     // AA bit is not read in queries
-    setBit(0, AA);
+    setBit(0, AA, header);
 
     // set TC to show non-truncated message
-    setBit(0, TC);
+    setBit(0, TC, header);
 
     // set RD to be recursive query (1)
-    setBit(1, RD);
+    setBit(1, RD, header);
 
     // RA bit is not read in queries
-    setBit(0, RA);
+    setBit(0, RA, header);
 
     // set Z to normal query (000)
-    setArrBit(new int[] {0, 0, 0}, Z);
+    setArrBit(new int[] {0, 0, 0}, Z, header);
 
     // RCODE is not read in queries
-    setArrBit(new int[] {0, 0, 0, 0}, RCODE);
+    setArrBit(new int[] {0, 0, 0, 0}, RCODE, header);
 
     // set QDCOUNT to show single query (0)
-    setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, QDCOUNT);
+    setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, QDCOUNT, header);
 
     // ANCOUNT is not read in queries
-    setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, ANCOUNT);
+    setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, ANCOUNT, header);
 
     // NSCOUNT is not read in queries
-    setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, NSCOUNT);
+    setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, NSCOUNT, header);
 
     // ARCOUNT is not read in queries
-    setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, ARCOUNT);
+    setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, ARCOUNT, header);
 
     System.out.println(header.toString());
     return header.toByteArray();
+  }
+
+  public byte[] createQuestion() {
+    // the question field QNAME is at most 63 bytes long
+    BitSet question = new BitSet(536);
+
+  }
+
+  public void getHeader(byte[] header) {
+    
   }
 
   // getters
@@ -133,16 +143,31 @@ public class DNSBitManipulator {
     return header.get(81, 97);
   }
 
-  // setters
+  // getters
 
-  public void setBit(int value, int location) {
-    boolean v = (value == 1) ? true : false;
-    header.set(location, v);
+  public int[] getArrBit(int firstBit, int lastBit, BitSet msg) {
+    int[] result = new int[lastBit - firstBit];
+    for (int i = 0; i < lastBit - firstBit; i++) {
+      result[i - firstBit] = getBit(firstBit + i, msg);
+    }
+    return result;
   }
 
-  public void setArrBit(int[] value, int location) {
+  public int getBit(int bit, BitSet msg) {
+    int result  = msg.get(bit) ? 1 : 0;
+    return result;
+  }
+
+  // setters
+
+  public void setBit(int value, int location, BitSet msg) {
+    boolean v = (value == 1) ? true : false;
+    msg.set(location, v);
+  }
+
+  public void setArrBit(int[] value, int location, BitSet msg) {
     for (int i = 0; i < value.length; i++) {
-        setBit(value[i], i + location);
+      setBit(value[i], i + location, msg);
     }
   }
 }
