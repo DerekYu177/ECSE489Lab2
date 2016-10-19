@@ -5,28 +5,28 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
 DNSClient	DNSClient.java	/^public class DNSClient {$/;"	c
-DNSPacketHeader	DNSPacketHeader.java	/^  public DNSPacketHeader() {}$/;"	m	class:DNSPacketHeader
-DNSPacketHeader	DNSPacketHeader.java	/^public class DNSPacketHeader {$/;"	c
+DNSPacketHeader	DNSBitManipulator.java	/^  public DNSPacketHeader() {}$/;"	m	class:DNSPacketHeader
+DNSPacketHeader	DNSBitManipulator.java	/^public class DNSPacketHeader {$/;"	c
 DNSPacketValidator	DNSPacketValidator.java	/^  public DNSPacketValidator(String[] input) {$/;"	m	class:DNSPacketValidator
 DNSPacketValidator	DNSPacketValidator.java	/^public class DNSPacketValidator {$/;"	c
-createPacket	DNSPacketHeader.java	/^  public byte[] createPacket() {$/;"	m	class:DNSPacketHeader
+createPacket	DNSBitManipulator.java	/^  public byte[] createPacket() {$/;"	m	class:DNSPacketHeader
 createPacket	DNSPacketValidator.java	/^  public byte[] createPacket() {$/;"	m	class:DNSPacketValidator
 extract	DNSPacketValidator.java	/^  public String[] extract(String[] data) {$/;"	m	class:DNSPacketValidator
-getAA	DNSPacketHeader.java	/^  public int getAA() {$/;"	m	class:DNSPacketHeader
-getANCOUNT	DNSPacketHeader.java	/^  public BitSet getANCOUNT() {$/;"	m	class:DNSPacketHeader
-getARCOUNT	DNSPacketHeader.java	/^  public BitSet getARCOUNT() {$/;"	m	class:DNSPacketHeader
-getID	DNSPacketHeader.java	/^  public BitSet getID() {$/;"	m	class:DNSPacketHeader
-getNSCOUNT	DNSPacketHeader.java	/^  public BitSet getNSCOUNT() {$/;"	m	class:DNSPacketHeader
-getOPCODE	DNSPacketHeader.java	/^  public BitSet getOPCODE() {$/;"	m	class:DNSPacketHeader
-getQDCOUNT	DNSPacketHeader.java	/^  public BitSet getQDCOUNT() {$/;"	m	class:DNSPacketHeader
-getQR	DNSPacketHeader.java	/^  public int getQR() {$/;"	m	class:DNSPacketHeader
-getRA	DNSPacketHeader.java	/^  public int getRA() {$/;"	m	class:DNSPacketHeader
-getRCODE	DNSPacketHeader.java	/^  public BitSet getRCODE() {$/;"	m	class:DNSPacketHeader
-getRD	DNSPacketHeader.java	/^  public int getRD() {$/;"	m	class:DNSPacketHeader
-getTC	DNSPacketHeader.java	/^  public int getTC() {$/;"	m	class:DNSPacketHeader
-getZ	DNSPacketHeader.java	/^  public BitSet getZ() {$/;"	m	class:DNSPacketHeader
-header	DNSPacketHeader.java	/^  private BitSet header = new BitSet(96);$/;"	f	class:DNSPacketHeader	file:
+getAA	DNSBitManipulator.java	/^  public int getAA() {$/;"	m	class:DNSPacketHeader
+getANCOUNT	DNSBitManipulator.java	/^  public BitSet getANCOUNT() {$/;"	m	class:DNSPacketHeader
+getARCOUNT	DNSBitManipulator.java	/^  public BitSet getARCOUNT() {$/;"	m	class:DNSPacketHeader
+getID	DNSBitManipulator.java	/^  public BitSet getID() {$/;"	m	class:DNSPacketHeader
+getNSCOUNT	DNSBitManipulator.java	/^  public BitSet getNSCOUNT() {$/;"	m	class:DNSPacketHeader
+getOPCODE	DNSBitManipulator.java	/^  public BitSet getOPCODE() {$/;"	m	class:DNSPacketHeader
+getQDCOUNT	DNSBitManipulator.java	/^  public BitSet getQDCOUNT() {$/;"	m	class:DNSPacketHeader
+getQR	DNSBitManipulator.java	/^  public int getQR() {$/;"	m	class:DNSPacketHeader
+getRA	DNSBitManipulator.java	/^  public int getRA() {$/;"	m	class:DNSPacketHeader
+getRCODE	DNSBitManipulator.java	/^  public BitSet getRCODE() {$/;"	m	class:DNSPacketHeader
+getRD	DNSBitManipulator.java	/^  public int getRD() {$/;"	m	class:DNSPacketHeader
+getTC	DNSBitManipulator.java	/^  public int getTC() {$/;"	m	class:DNSPacketHeader
+getZ	DNSBitManipulator.java	/^  public BitSet getZ() {$/;"	m	class:DNSPacketHeader
+header	DNSBitManipulator.java	/^  private BitSet header = new BitSet(96);$/;"	f	class:DNSPacketHeader	file:
 input	DNSPacketValidator.java	/^  private String[] input;$/;"	f	class:DNSPacketValidator	file:
 main	DNSClient.java	/^	public static void main(String args[]) throws Exception$/;"	m	class:DNSClient
-setArrBit	DNSPacketHeader.java	/^  public void setArrBit(int[] value, int location) {$/;"	m	class:DNSPacketHeader
-setBit	DNSPacketHeader.java	/^  public void setBit(int value, int location) {$/;"	m	class:DNSPacketHeader
+setArrBit	DNSBitManipulator.java	/^  public void setArrBit(int[] value, int location) {$/;"	m	class:DNSPacketHeader
+setBit	DNSBitManipulator.java	/^  public void setBit(int value, int location) {$/;"	m	class:DNSPacketHeader

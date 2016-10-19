@@ -20,12 +20,10 @@ public class DNSPacketValidator {
     String[] validData = extract(this.input);
 
     // TODO: stitch packetHeader and packetQuery together
-    DNSPacketHeader dnsHeader = new DNSPacketHeader();
-    DNSPacketQuery dnsQuery = new DNSPacketQuery(validData);
+    DNSBitManipulator dnsbit = new DNSBitManipulator(validData);
 
     // TODO: use the valid data to create the appropriate packet
-    packetHeader = dnsHeader.createPacket();
-    packetQuery = dnsQuery.createPacket();
+    packetHeader = dnsbit.createHeader();
 
     return packetHeader;
   }

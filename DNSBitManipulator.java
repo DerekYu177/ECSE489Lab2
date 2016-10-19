@@ -36,7 +36,7 @@ public class DNSPacketHeader {
     setBit(0, AA);
 
     // set TC to show non-truncated message
-    setBit(0, RC);
+    setBit(0, TC);
 
     // set RD to be recursive query (1)
     setBit(1, RD);
