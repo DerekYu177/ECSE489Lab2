@@ -5,6 +5,8 @@ import java.nio.charset.*;
 
 public class DNSBitManipulator {
 
+  private final int BYTE_SIZE = 8;
+
   // for createHeader
   // the placement of each section is determined by the head
   private int ID_head = 0;
@@ -41,7 +43,8 @@ public class DNSBitManipulator {
   public DNSBitManipulator() {}
 
   public byte[] createHeader() {
-    BitSet header = new BitSet(96);
+    int BIT_SIZE = 96;
+    BitSet header = new BitSet(BIT_SIZE);
     byte[] packetHeader = new byte[12];
 
     // set ID to be a random 16 bit number
@@ -83,8 +86,19 @@ public class DNSBitManipulator {
     // ARCOUNT is not read in queries
     setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, ARCOUNT_head, header);
 
+    // set the last bit to true to prevent truncation
+    header.set(BIT_SIZE);
+
+    // account for the truncation prevention bit
     System.out.println("Cardinality = " + header.cardinality());
-    packetHeader = header.toByteArray(); // this method is not to be trusted
+
+    // this method is not to be trusted
+    // packetHeader = header.toByteArray();
+
+    packetHeader = toByteArray(header, BIT_SIZE);
+
+    System.out.println("packetHeader.length = " + packetHeader.length);
+
     return packetHeader;
   }
 
@@ -164,7 +178,43 @@ public class DNSBitManipulator {
     return new byte[] {0, 0, 0, 1};
   }
 
-  public byte[] toByteArray(BitSet b) {}
+  public byte[] toByteArray(BitSet b, int size) {
+
+    // account for extra bits which require an extra byte
+		int extra = (size % BYTE_SIZE > 0) ? 1 : 0;
+		int byte_size = size / BYTE_SIZE + extra;
+
+    // initialize the return array
+		byte[] result = new byte[byte_size];
+
+    // loop with double variables for placing answers into result and individual bits
+		for (int byte_head = 0, write_head = 0; byte_head < size; byte_head+=BYTE_SIZE, write_head++) {
+
+      int[] octet = new int[BYTE_SIZE];
+			for (int byte_point = 0; byte_point < BYTE_SIZE; byte_point++) {
+				int value = b.get(byte_point + byte_head) ? 1 : 0;
+				octet[byte_point] = value;
+			}
+
+			// octet now is filled with the 8 consecutive integers [0,1]
+			result[write_head] = bitsToBytes(octet);
+		}
+
+		return result;
+	}
+
+  public byte bitsToBytes(int[] int_arr) {
+    double double_val = 0;
+
+    for (int pos = 0; pos < BYTE_SIZE; pos++) {
+      int exp = BYTE_SIZE - (pos + 1);
+      if (int_arr[pos] == 1) {
+        double_val = double_val + Math.pow(2, exp);
+      }
+    }
+
+    return (byte) double_val;
+  }
 
   // getters
 

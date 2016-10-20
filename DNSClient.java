@@ -45,9 +45,6 @@ public class DNSClient {
 		// Create a packet structure to store data sent back by the server
 		DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
 
-		System.out.println("receiveData" + receiveData);
-		printbyte(receiveData);
-
 		// Receive data from the server
 		clientSocket.receive(receivePacket);
 
