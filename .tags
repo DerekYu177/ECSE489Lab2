@@ -49,7 +49,6 @@ getArrBit	DNSBitManipulator.java	/^  public int[] getArrBit(int firstBit, int la
 getBit	DNSBitManipulator.java	/^  public int getBit(int bit, BitSet msg) {$/;"	m	class:DNSBitManipulator
 getValidData	DNSPacketValidator.java	/^  public String[] getValidData() {$/;"	m	class:DNSPacketValidator
 input	DNSPacketValidator.java	/^  private String[] input;$/;"	f	class:DNSPacketValidator	file:
-intToByte	DNSClient.java	/^	public static byte[] intToByte(final int i) {$/;"	m	class:DNSClient
 main	DNSClient.java	/^	public static void main(String args[]) throws Exception$/;"	m	class:DNSClient
 packetdata	DNSReceiver.java	/^ByteBuffer packetdata;$/;"	f	class:DNSReceiver
 portNumber	DNSClient.java	/^	public static int portNumber(String port) {$/;"	m	class:DNSClient

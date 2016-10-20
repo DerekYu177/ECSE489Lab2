@@ -87,9 +87,9 @@ public class DNSBitManipulator {
     setArrBit(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, ARCOUNT_head, header);
 
     // set the last bit to true to prevent truncation
+    // since the header is exactly BIT_SIZE, this bit is ignored. Useful eh?
     header.set(BIT_SIZE);
 
-    // account for the truncation prevention bit
     System.out.println("Cardinality = " + header.cardinality());
 
     // this method is not to be trusted

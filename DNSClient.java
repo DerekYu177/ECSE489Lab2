@@ -71,22 +71,14 @@ public class DNSClient {
 		String[] subIp = ip.split("\\.");
 		for (int i = 0; i < subIp.length; i++) {
 			int octet = Integer.valueOf(subIp[i]);
-			result[i] = intToByte(octet)[3];
+
+			// conversion from int to unsigned byte is as easy as casting
+			result[i] = (byte) octet;
+
 			System.out.println("Original: " + octet + " Altered: " + result[i]);
 		}
 
 		return result;
-	}
-
-	public static byte[] intToByte(final int i) {
-    ByteBuffer bb = ByteBuffer.allocate(4);
-    bb.putInt(i);
-		System.out.println(bb.array().length);
-		for (int j = 0; j < bb.array().length; j++) {
-			int value = (bb.array()[j] < 0) ? bb.array()[j] + 256 : bb.array()[j];
-			System.out.println(value);
-		}
-    return bb.array();
 	}
 
 	// debug methods
