@@ -22,13 +22,13 @@ public class DNSClient {
 
 		int port = portNumber(validData[4]);
 
-		// current methodology does not work
-		// byte[] ipAddr = translateIPAddress(validData[0]);
-		// InetAddress ipAddress = InetAddress.getByAddress(ipAddr);
+		// current methodology does work
+		byte[] ipAddr = translateIPAddress(validData[0]);
+		InetAddress ipAddress = InetAddress.getByAddress(ipAddr);
 		// System.out.println(ipAddress);
 
 		// THIS IS NOT THE CORRECT WAY
-		InetAddress ipAddress = InetAddress.getByName(validData[0]);
+		// InetAddress ipAddress = InetAddress.getByName(validData[0]);
 
 		// create UDP socket
 		DatagramSocket clientSocket = new DatagramSocket();
