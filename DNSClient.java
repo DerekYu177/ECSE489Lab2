@@ -51,12 +51,8 @@ public class DNSClient {
 		System.out.println("ReceivePacket: " + receivePacket);
 		printbyte(receivePacket.getData());
 
-		// Extract the sentence (as a String object) from the received byte stream
-		// String modifiedSentence = new String(receivePacket.getData());
-		// System.out.println("From self: " + sentence);
-
 		// Close the socket
-		// clientSocket.close();
+		clientSocket.close();
 	}
 
 	public static int portNumber(String port) {
