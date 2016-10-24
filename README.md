@@ -1,9 +1,10 @@
 # ECSE489Lab2
-Let's try this one again
 
 The purpose of this lab is to be able create a simple CLI for DNS packets
 
-Interface:
+##### Built using Java 5, Java version 1.8.0_101
+
+### Interface:
 
 `DnsClient	[-t	timeout]	[-r	max-retries] [-port] [-mx|-ns] @server name`
 
@@ -16,7 +17,13 @@ where the arguments are defined as follows.
   - `name` (required) is the domain name to query for.
 
 Technical details:
-  1. `DNSPacketMaker`, which is called form `UDPClient`
-  2. `DNSPacketInterpreter`, which decodes and displays replies for the `UDPClient`
+  1. `DNSClient` passes `args` to `DNSPacketValidator`
+  2. `DNSPacketValidator` calls `extract()` on `args` to extract explicit user inputs. These are passed to `DNSBitManipulator` when creating query packets
+  3. `DNSBitManipulator` has `createHeader` and `createBody` methods
+  4. `createHeader()` uses `BitSet` to create header packets
+  5. `createBody()` dynamically creates QNAME using `ArrayList<byte>`
+  6. Individual packets are returned back to `DNSPacketValidator`, and stitched together for the final query packet.
+  7. This packet is then placed inside a UDP datagram and sent to the desired address specified in the interface
+  8. The return packet is captured and placed into a receiveBuffer, but there is no implementation that will interpret this packet. 
 
-n.b. `ctrl`+`shift`+`m` for live display
+n.b. `ctrl`+`shift`+`m` for live display if you are viewing this from Atom
