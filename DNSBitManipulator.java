@@ -112,6 +112,8 @@ public class DNSBitManipulator {
 
     byte[] question = new byte[QNAME.length + QTYPE.length + QCLASS.length];
 
+    // copy each of the individual byte arrays into
+    // question byte[], being careful of the overlap
     for (int i = 0; i < QNAME.length; i++) {
       question[i] = QNAME[i];
     }
@@ -151,11 +153,16 @@ public class DNSBitManipulator {
 
     QNAME_ArrayList.trimToSize();
 
+    // convert the arrayList into the byte[] required
+    // cannot be done with byte[] QNAME = QNAME_ArrayList.toArray(new byte[QNAME_ArrayList.size()]);
+    // as apparently byte[] is not a method that is used
+    // manually adding QNAME_ArrayList to QNAME
     byte[] QNAME = new byte[QNAME_ArrayList.size()];
 
     for (int i = 0; i < QNAME.length; i++) {
       QNAME[i] = QNAME_ArrayList.get(i);
     }
+
     return QNAME;
   }
 
@@ -187,12 +194,16 @@ public class DNSBitManipulator {
     // initialize the return array
 		byte[] result = new byte[byte_size];
 
-    // loop with double variables for placing answers into result and individual bits
+    // loop with double variables for placing answers into the return array and individual bits
+    // the outer loop byte_head jumps by 8 to encapsulate a byte (8 bits)
+    // the inner loop runs over the 8 bits and packages them into variable octet
+    // the octet is then converted from 8 bits to a byte through #bitstoByte
+    // these bytes are inserted into the return array (the result)
 		for (int byte_head = 0, write_head = 0; byte_head < size; byte_head+=BYTE_SIZE, write_head++) {
 
       int[] octet = new int[BYTE_SIZE];
 			for (int byte_point = 0; byte_point < BYTE_SIZE; byte_point++) {
-				int value = b.get(byte_point + byte_head) ? 1 : 0;
+        int value = getBit(byte_point + byte_head, b);
 				octet[byte_point] = value;
 			}
 
@@ -203,6 +214,10 @@ public class DNSBitManipulator {
 		return result;
 	}
 
+  // converts a set of 8 bits into a byte by regular Math
+  // int_arr must be filled with integers [0, 1]
+  // #bitsToBytes iterates over and does continual summation based on position
+  // methodology similar to doing by hand
   public byte bitsToBytes(int[] int_arr) {
     double double_val = 0;
 

@@ -16,9 +16,12 @@ public class DNSPacketValidator {
     DNSBitManipulator dnsbit = new DNSBitManipulator();
 
     byte[] packetHeader = dnsbit.createHeader();
-    DNSClient.printbyte(packetHeader);
     byte[] packetQuestion = dnsbit.createQuestion(validData);
 
+    DNSClient.printbyte(packetHeader);
+
+    // we declare a new byte[] to be the final packet sent to the DNS server
+    // we then stitch packetHeader and packetQuestion into it
     byte[] packet = new byte[packetHeader.length + packetQuestion.length];
 
     for (int i = 0; i < packetHeader.length; i++) {
@@ -35,6 +38,8 @@ public class DNSPacketValidator {
   public String[] extract(String[] data) {
     String timeOut = null, maxRetries = null, port = null, queryType = null;
 
+    // detects the required identifier
+    // sets the appropriate variable, which must be the value after the identifier
     for (int i = 0; i < data.length; i++) {
       String option = data[i];
       switch (option) {
@@ -57,10 +62,13 @@ public class DNSPacketValidator {
       }
     }
 
+    // dnsName must be the second to last variable in the interface
     // dnsName has a "@" appended to the front
     String dnsNamePartial = data[data.length - 2];
     String dnsName = dnsNamePartial.substring(1);
 
+    // domainName is the last variable in the interface
+    // as specified in the README
     String domainName = data[data.length - 1];
 
     return new String[] {dnsName, domainName, timeOut, maxRetries, port, queryType};

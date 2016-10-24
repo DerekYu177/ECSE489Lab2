@@ -24,6 +24,8 @@ Technical details:
   5. `createBody()` dynamically creates QNAME using `ArrayList<byte>`
   6. Individual packets are returned back to `DNSPacketValidator`, and stitched together for the final query packet.
   7. This packet is then placed inside a UDP datagram and sent to the desired address specified in the interface
-  8. The return packet is captured and placed into a receiveBuffer, but there is no implementation that will interpret this packet. 
+  8. The return packet is captured and placed into a receiveBuffer, but there is no implementation that will interpret this packet.
+
+Copied from my github @ https://github.com/DerekYu177/ECSE489Lab2
 
 n.b. `ctrl`+`shift`+`m` for live display if you are viewing this from Atom
